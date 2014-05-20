@@ -1,0 +1,9 @@
+<grid>
+	<columns>
+		<column label="Teste" />
+		<column label="teste" />
+	</columns>
+	<rows>
+		<row></row>
+	</rows>
+</grid>

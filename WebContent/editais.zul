@@ -9,7 +9,22 @@
 			<include src="/sidebar.zul"></include>
 		</west>
 		<center id="mainContent" autoscroll="true">
-			<include src="/teste.zul"></include>
+			<grid>
+				<columns>
+					<column label="#" />
+					<column label="Titulo" />
+					<column label="Data de publicação" />
+					<column label="Vagas" />
+				</columns>
+				<rows>
+					<row>
+						<cell>1</cell>
+						<cell>Teste</cell>
+						<cell>12/04/1993</cell>
+						<cell>2</cell>
+					</row>
+				</rows>
+			</grid>
 		</center>
 		<south height="50px" border="none">
 			<include src="/rodape.zul"></include>
