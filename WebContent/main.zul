@@ -1,0 +1,18 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<zk>
+	<borderlayout hflex="1" vflex="1">
+		<north height="110px" border="none">
+			<include src="/cabecalho.zul"></include>
+		</north>
+		<west width="268px" border="none" collapsible="true"
+			splittable="true">
+			<include src="/sidebar.zul"></include>
+		</west>
+		<center id="mainContent" autoscroll="true">
+			<include src="/conteudo.zul"></include>
+		</center>
+		<south height="50px" border="none">
+			<include src="/rodape.zul"></include>
+		</south>
+	</borderlayout>
+</zk>

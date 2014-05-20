@@ -1,0 +1,11 @@
+<grid hflex="1" vflex="1" sclass="sidebar" id="fnList"
+	apply="org.ufba.dcc.mata60.controller.Main_SideBar">
+
+
+	<columns>
+		<column width="46px" />	<column />
+	</columns>
+	<rows>
+
+	</rows>
+</grid>
