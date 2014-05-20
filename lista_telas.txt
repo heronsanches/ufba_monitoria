@@ -1,0 +1,13 @@
+Telas do sistema
+-----------------------------------
+
+- Tela de formulários;
+- Login;
+- Lista de editais;
+- Detalhes do edital;
+- Tela de resultado de processo seletivo;
+(Com usuário logado)
+- Plano de atividade(lista de atividades);
+- Enviar relatório de atividade;
+- Lista de bolsas de um aluno;
+- Detalhes da bolsa
