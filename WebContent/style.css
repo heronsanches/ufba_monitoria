@@ -66,3 +66,8 @@
 .todo-box {
 	padding-right:4px;
 }
+
+.pos20left{
+   position: absolute;
+   left: 25%;
+   } 

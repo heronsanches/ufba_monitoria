@@ -1,8 +1,9 @@
 <?link rel="stylesheet" type="text/css" href="/style.css"?>
-<window apply="org.ufba.dcc.mata60.controller.RegisterView"
+
+<window 
 	border="normal" hflex="1" vflex="1" contentStyle="overflow:auto">
    <caption src="/imagens/profile.png" sclass="fn-caption" label="Profile (MVC)"/>
-   <vlayout>
+   <vlayout hflex="1"  sclass="pos20left">
       <grid width="500px">
          <columns>
             <column align="right" hflex="min"/>
@@ -41,8 +42,8 @@
             </row>
          </rows>
       </grid>
-      <div>You are editing <label id="nameLabel"/>'s profile.</div>
-      <hlayout>
+      <hlayout >
+         
          <button id="saveProfile" label="Save"/>
          <button id="reloadProfile" label="Reload"/>
       </hlayout>

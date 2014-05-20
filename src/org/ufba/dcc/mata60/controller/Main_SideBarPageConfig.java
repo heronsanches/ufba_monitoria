@@ -14,9 +14,9 @@ public class Main_SideBarPageConfig implements SidebarPageConfig{
 	HashMap<String,SidebarPage> pageMap = new LinkedHashMap<String,SidebarPage>();
 	
 	public Main_SideBarPageConfig(){		
-		pageMap.put("fn1",new SidebarPage("ufba", "UFBA", "/imagens/icons/add.png", "http://localhost:8080/ProjetoMonitoria/teste.zul"));
-		pageMap.put("fn2",new SidebarPage("ufba_dcc", "Listagem", "/imagens/icons/users.png", "http://www.dcc.ufba.br"));
-		pageMap.put("fn3",new SidebarPage("ufba_disciplinas", "UFBA DCC Disciplinas", "/imagens/icons/rss.png", "http://disciplinas.dcc.ufba.br"));
+		pageMap.put("fn1",new SidebarPage("ufba", "CADASTRO", "/imagens/icons/add.png", "http://localhost:8080/ProjetoMonitoria/index_register.zul"));
+		pageMap.put("fn2",new SidebarPage("ufba_dcc", "LISTAGEM", "/imagens/icons/users.png", "http://www.dcc.ufba.br"));
+		pageMap.put("fn3",new SidebarPage("ufba_disciplinas", "UFBA DCC Disciplinas", "/imagens/icons/rss.png", "https://github.com/heronsanches/ufba_monitoria"));
 	}
 	
 	@Override

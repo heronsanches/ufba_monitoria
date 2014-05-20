@@ -9,9 +9,11 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.event.SerializableEventListener;
 import org.zkoss.zk.ui.select.SelectorComposer;
+import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Grid;
 import org.zkoss.zul.Image;
+import org.zkoss.zul.Include;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Rows;
 
@@ -34,7 +36,7 @@ public class Main_SideBar extends SelectorComposer<Component> {
 		
 		for (SidebarPage page : pageConfig.getPages()) {
 			
-			org.zkoss.zul.Row row = constructSidebarRow(page.getLabel(), page.getIconUri(),
+			org.zkoss.zul.Row row = constructSidebarRow(page.getName(), page.getLabel(), page.getIconUri(),
 					page.getUri());
 			
 			rows.appendChild(row);
@@ -42,7 +44,7 @@ public class Main_SideBar extends SelectorComposer<Component> {
 		}
 	}
 
-	private org.zkoss.zul.Row constructSidebarRow(String label, String imageSrc,
+	private org.zkoss.zul.Row constructSidebarRow(final String name, String label, String imageSrc,
 			final String locationUri) {
 
 		// construct component and hierarchy
@@ -62,8 +64,22 @@ public class Main_SideBar extends SelectorComposer<Component> {
 			private static final long serialVersionUID = 1L;
 
 			public void onEvent(Event event) throws Exception {
-				// redirect current url to new location
-				Executions.getCurrent().sendRedirect(locationUri);
+				//redirect current url to new location
+				if(locationUri.startsWith("http")){
+					//open a new browser tab
+					Executions.getCurrent().sendRedirect(locationUri);
+				}else{
+					//use iterable to find the first include only
+					Include include = (Include)Selectors.iterable(fnList.getPage(), "#mainInclude")
+							.iterator().next();
+					include.setSrc(locationUri);
+					
+					//advance bookmark control, 
+					//bookmark with a prefix
+					if(name!=null){
+						getPage().getDesktop().setBookmark("p_"+name);
+					}
+				}
 			}
 		};
 
