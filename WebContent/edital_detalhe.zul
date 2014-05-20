@@ -1,0 +1,69 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<zk>
+	<borderlayout hflex="1" vflex="1">
+		<north height="110px" border="none">
+			<include src="/cabecalho.zul"></include>
+		</north>
+		<west width="268px" border="none" collapsible="true"
+			splittable="true">
+			<include src="/sidebar.zul"></include>
+		</west>
+		<center id="mainContent" autoscroll="true">
+			<grid hflex="1"><!-- hflex="1" - available width inside parent (window) -->
+				<auxhead>
+					<auxheader colspan="2" label="Detalhe Edital"
+						style="font-size:16px" />
+				</auxhead>
+				<columns visible="false">
+					<column></column>
+				</columns>
+				<rows>
+					<row align="right">
+						<hlayout>
+							<button label="Inscrição processo seletivo" />
+						</hlayout>
+					</row>
+					<row>
+						Nome Edital: Monitoria na matéria MATA60 (Banco
+						de Dados)
+					</row>
+					<row>Data de publicação: 20/05/2014</row>
+					<row>Prazo de inscrição: 20/06/2014</row>
+					<row>
+						<grid>
+							<auxhead>
+								<auxheader colspan="2"
+									label="Classificação do processo seletivo" />
+							</auxhead>
+							<columns>
+								<column>#</column>
+								<column>Nome</column>
+							</columns>
+							<rows>
+								<row>
+									<cell>1</cell>
+									<cell>Liu Lima</cell>
+								</row>
+								<row>
+									<cell>2</cell>
+									<cell>Lara</cell>
+								</row>
+								<row>
+									<cell>3</cell>
+									<cell>Igor de Lima</cell>
+								</row>
+								<row>
+									<cell>4</cell>
+									<cell>Bianca Araújo</cell>
+								</row>
+							</rows>
+						</grid>
+					</row>
+				</rows>
+			</grid>
+		</center>
+		<south height="50px" border="none">
+			<include src="/rodape.zul"></include>
+		</south>
+	</borderlayout>
+</zk>

@@ -15,8 +15,8 @@ public class Main_SideBarPageConfig implements SidebarPageConfig{
 	
 	public Main_SideBarPageConfig(){		
 		pageMap.put("fn1",new SidebarPage("ufba", "CADASTRO", "/imagens/icons/add.png", "http://localhost:8080/ProjetoMonitoria/index_register.zul"));
-		pageMap.put("fn2",new SidebarPage("ufba_dcc", "LISTAGEM", "/imagens/icons/users.png", "http://www.dcc.ufba.br"));
-		pageMap.put("fn3",new SidebarPage("ufba_disciplinas", "UFBA DCC Disciplinas", "/imagens/icons/rss.png", "https://github.com/heronsanches/ufba_monitoria"));
+		pageMap.put("fn2",new SidebarPage("ufba_dcc", "LISTAGEM", "/imagens/icons/users.png", "http://localhost:8080/ProjetoMonitoria/editais.zul"));
+		pageMap.put("fn3",new SidebarPage("ufba_disciplinas", "Detalhe Edital", "/imagens/icons/rss.png", "http://localhost:8080/ProjetoMonitoria/edital_detalhe.zul"));
 	}
 	
 	@Override
