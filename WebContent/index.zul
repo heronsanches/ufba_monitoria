@@ -1,6 +1,6 @@
 <?link rel="stylesheet" type="text/css" href="/style.css"?>
 <!-- protect page by the authentication init  -->
-<?init class="org.ufba.dcc.mata60.controller.AuthenticationInit"?>
+<!-- <?init class="org.ufba.dcc.mata60.controller.AuthenticationInit"?> -->
 <!-- authentication init have to locate before composition -->
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
 

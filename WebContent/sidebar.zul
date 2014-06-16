@@ -1,11 +1,27 @@
-<grid hflex="1" vflex="1" sclass="sidebar" id="fnList"
-	apply="org.ufba.dcc.mata60.controller.Main_SideBar">
+<menubar orient="vertical" sclass="sidebar"
+	apply="org.ufba.dcc.mata60.controller.SideBar"
+	id="menubar">
+	<menu label="Cadastrar" id="menu_cadastrar">
+		<menupopup>
+			<menuitem label="Departamento" id="mc_departamento"/>
+			<menuitem label="Professor" id="mc_professor"/>
+			<menuitem label="Disciplina" id="mc_disciplina"/>
+			<menuitem label="Turma" id="mc_turma"/>
+		</menupopup>
+	</menu>
+	<menu label="Projeto" id="menu_projeto">
+		<menupopup>
+			<menuitem label="Novo" />
+			<menuitem label="Listar" />
+		</menupopup>
+	</menu>
+	<menu label="Edital" id="menu_edital">
+		<menupopup>
+			<menuitem label="Novo" />
+			<menuitem label="Listar" />
+		</menupopup>
+	</menu>
+	<menuitem label="Sair" id="menuitem_sair"/>
+</menubar>
 
 
-	<columns>
-		<column width="46px" />	<column />
-	</columns>
-	<rows>
-
-	</rows>
-</grid>

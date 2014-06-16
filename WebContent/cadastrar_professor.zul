@@ -1,0 +1,70 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+	<window border="normal" hflex="1" vflex="1"
+		contentStyle="overflow:auto"
+		apply="org.ufba.dcc.mata60.controller.CadastrarProfessor">
+		
+		<caption src="/imagens/icons/plus.png" sclass="fn-caption"
+			label="Professor" />
+      
+		<vlayout hflex="1" sclass="pos20left">
+			<grid width="500px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">Nome:</cell>
+						<cell>
+							<textbox id="nome" width="200px" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Matrícula:</cell>
+						<cell>
+							<textbox id="matricula" width="200px" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">CPF:</cell>
+						<cell>
+							<textbox id="cpf" width="200px" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Departamento:</cell>
+						<cell>
+							<listbox id="listbox_departamentoNomes" mold="select">
+								<template name="model">
+								 <listitem label="${each}"/>
+								</template>
+							</listbox>
+							
+						</cell>
+					</row>
+					</rows>
+            </grid>
+            <grid width="500px">
+            <columns>
+               <column align="right" hflex="min" />
+               <column />
+            </columns>
+            <rows>
+	            <row>
+	               <radiogroup id="rdGroup_tipoProfessores"/>
+	            </row>
+	            <row>
+	               <cell sclass="row-title">Tipo Professor:</cell>
+	               <radio id="rd_de" label="DE" radiogroup="rdGroup_tipoProfessores" />
+	               <radio id="rd_20h" label="20h" radiogroup="rdGroup_tipoProfessores"/>
+	               <radio id="rd_40h" label="40h" radiogroup="rdGroup_tipoProfessores"/> 
+	            </row>
+            </rows>
+            
+         </grid>
+			<hlayout>
+				<button id="btn_cadastrarProfessor" label="Cadastrar" />
+				<button id="btn_apagarCampos" label="Apagar Tudo" />
+			</hlayout>
+		</vlayout>
+	</window>

@@ -1,13 +1,13 @@
 <div hflex="1" vflex="1" sclass="banner">
-    <hbox hflex="1" vflex="1" align="center" >
-        <a href="http://localhost:8080/ProjetoMonitoria/index.zul" >
-            <image src="/imagens/icons/ufba.jpg" width="80px" />
-        </a>
-        <div width="400px">
-            <label value="Projeto Monitoria UFBA" sclass="banner-head" />
-        </div>
-        <hbox hflex="1" vflex="1" pack="end" align="end">
-            Usuário X
-        </hbox>
-    </hbox>
+	<hbox hflex="1" vflex="1" align="center">
+		
+
+		<div width="400px">
+         <label value="Sistema de Monitoria UFBA"
+            sclass="banner-head" />
+		</div>
+		<hbox hflex="1" vflex="1" pack="end" align="end">
+			Usuário X
+		</hbox>
+	</hbox>
 </div>

@@ -1,9 +1,9 @@
 <?link rel="stylesheet" type="text/css" href="/style.css"?>
 <zk>
 	<borderlayout hflex="1" vflex="1"
-		apply="org.ufba.dcc.mata60.controller.BookmarkChangeController"
-		if="${not sessionScope.userCredential.anonymous}">
-		<north height="110px" border="none">
+		apply="org.ufba.dcc.mata60.controller.Index"
+		if="${not sessionScope.userCredential.anonymous}" id="mainBorder">
+		<north height="50px" border="none">
 			<include src="/cabecalho.zul"></include>
 		</north>
 		<west width="268px" border="none" collapsible="true"
@@ -14,9 +14,7 @@
 			self="@insert(content)">
 			<!-- the main content will be insert to here -->
 		</center>
-		<south height="50px" border="none">
-			<include src="/rodape.zul"></include>
-		</south>
+
 	</borderlayout>
 	<div if="${sessionScope.userCredential.anonymous}">
 		Redirect to login page.....

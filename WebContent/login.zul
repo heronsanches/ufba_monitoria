@@ -7,7 +7,7 @@
       <vlayout>
          <window id="loginWin"
             apply="org.ufba.dcc.mata60.controller.Login"
-            title="Login with you name" border="normal" hflex="min">
+            title="Tela de Acesso" border="normal" hflex="min">
             <vbox hflex="min" align="center">
                <grid hflex="min">
                   <columns>
@@ -16,11 +16,11 @@
                   </columns>
                   <rows>
                      <row>
-                        Account :
+                        Usuário :
                         <textbox id="account" width="200px" />
                      </row>
                      <row>
-                        Password :
+                        Senha :
                         <textbox id="password" type="password"
                            width="200px" />
                      </row>

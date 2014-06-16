@@ -1,0 +1,67 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<zk>
+   <window border="normal" hflex="1" vflex="1"
+      contentStyle="overflow:auto"
+      apply="org.ufba.dcc.mata60.controller.CadastrarTurma">
+      
+      <caption src="/imagens/icons/plus.png" sclass="fn-caption"
+         label="Turma" />
+         
+      
+      <vlayout hflex="1" sclass="pos20left">
+         <grid width="500px">
+            <columns>
+               <column align="right" hflex="min" />
+               <column />
+            </columns>
+            <rows>
+               <row>
+                  <cell sclass="row-title">Número:</cell>
+                  <cell>
+                     <textbox id="numero" width="200px" />
+                  </cell>
+                 </row>
+                   <row>
+                  <cell sclass="row-title">Hora Inicio:</cell>
+                  <cell>
+                     <textbox id="hora_inicio" width="200px" />
+                  </cell>
+               </row>
+                <row>
+                  <cell sclass="row-title">Hora Fim:</cell>
+                  <cell>
+                     <textbox id="hora_fim" width="200px" />
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Data Inicio:</cell>
+                  <cell>
+                     <datebox id="data_inicio"/>
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Semestre:</cell>
+                  <cell>
+                     <textbox id="semestre" width="200px" />
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Disciplina:</cell>
+                  <cell>
+                     <listbox id="listbox_disciplinaNomes" mold="select">
+                        <template name="model">
+                         <listitem label="${each}"/>
+                        </template>
+                     </listbox>
+                  </cell>
+               </row>
+               </rows>
+            </grid>
+ 
+         <hlayout>
+            <button id="saveProfile" label="Cadastrar" />
+            <button id="reloadProfile" label="Apagar Tudo" />
+         </hlayout>
+      </vlayout>
+   </window>
+</zk>

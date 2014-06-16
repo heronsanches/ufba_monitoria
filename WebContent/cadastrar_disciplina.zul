@@ -1,0 +1,47 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+   <window border="normal" hflex="1" vflex="1"
+      contentStyle="overflow:auto"
+      apply="org.ufba.dcc.mata60.controller.CadastrarDisciplina">
+     
+      <caption src="/imagens/icons/plus.png" sclass="fn-caption"
+         label="Disciplina" />
+         
+      
+      <vlayout hflex="1" sclass="pos20left">
+         <grid width="500px">
+            <columns>
+               <column align="right" hflex="min" />
+               <column />
+            </columns>
+            <rows>
+               <row>
+                  <cell sclass="row-title">Nome:</cell>
+                  <cell>
+                     <textbox id="nome" width="200px" />
+                  </cell>
+                 </row>
+                   <row>
+                  <cell sclass="row-title">Código:</cell>
+                  <cell>
+                     <textbox id="codigo_disciplina" width="200px" />
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Departamento:</cell>
+                  <cell>
+                     <listbox id="listbox_departamentoNomes" mold="select">
+                        <template name="model">
+                         <listitem label="${each}"/>
+                        </template>
+                     </listbox>
+                  </cell>
+               </row>
+               </rows>
+            </grid>
+ 
+         <hlayout>
+            <button id="btn_cadastrar" label="Cadastrar" />
+            <button id="btn_apagarCampos" label="Apagar Tudo" />
+         </hlayout>
+      </vlayout>
+   </window>
