@@ -6,20 +6,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class DisciplinaDAO {
 
+public class ProfessorDAO {
 	
-	public void insert(Disciplina disciplina){
-		// PreparedStatements can use variables and are more efficient
+	
+	public void insert(Professor professor){
+
 		try {
 			
 			PreparedStatement preparedStatement = DB.getConnectionDB().prepareStatement("insert into " +
-				DB.getDbName()+".disciplina values (?, ?, ?)");
+				DB.getDbName()+".professor values (?, ?, ?, ?, ?)");
 		
-			// Parameters start with 1
-			preparedStatement.setString(1, disciplina.getCod());
-			preparedStatement.setString(2, disciplina.getNome());
-			preparedStatement.setInt(3, disciplina.getDepartamento_cod());
+			preparedStatement.setString(1, professor.getCpf());
+			preparedStatement.setString(2, professor.getMatricula());
+			preparedStatement.setString(3, professor.getNome());
+			preparedStatement.setInt(4, professor.getDepartamento_cod());
+			preparedStatement.setString(5, professor.getTipo());
 			
 			preparedStatement.executeUpdate(); // update
 			preparedStatement.close();
@@ -38,34 +40,35 @@ public class DisciplinaDAO {
 		
 	}
 	
-	
-	public  ArrayList<Disciplina> getAll() {
-		// Statements allow to issue SQL queries to the database
+	public  ArrayList<Professor> getAll() {
+
 		try {
 			
 			Statement statement = DB.getConnectionDB().createStatement();
 			
-			// Result set get the result of the SQL query
-			ResultSet resultSet = statement.executeQuery("select * from "+DB.getDbName()+".disciplina");
+			ResultSet resultSet = statement.executeQuery("select * from "+DB.getDbName()+".professor");
 			
-			Disciplina disciplina = null;
-			ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
+			Professor professor = null;
+			ArrayList<Professor> professores = new ArrayList<Professor>();
 
 			while (resultSet.next()) {
 				// It is possible to get the columns via name
 				// also possible to get the columns via the column number
 				// which starts at 1
 				// e.g. resultSet.getSTring(2);
-				disciplina = new Disciplina();
-				disciplina.setCod(resultSet.getString("cod"));
-				disciplina.setDepartamento_cod(resultSet.getInt("departamento_cod"));
-				disciplina.setNome(resultSet.getString("nome"));
-				disciplinas.add(disciplina);
+				professor = new Professor();
+				professor.setCpf(resultSet.getString("cpf"));
+				professor.setDepartamento_cod(resultSet.getInt("departamento_cod"));
+				professor.setMatricula(resultSet.getString("matricula"));
+				professor.setNome(resultSet.getString("nome"));
+				professor.setTipo(resultSet.getString("tipo"));
+
+				professores.add(professor);
 			
 			}
 			
 			statement.close();
-			return disciplinas;
+			return professores;
 			
 		} catch (SQLException e) {
 			
@@ -82,6 +85,5 @@ public class DisciplinaDAO {
 		}
 		
 	}
-	
-	
+
 }

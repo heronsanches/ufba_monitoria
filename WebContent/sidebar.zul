@@ -1,27 +1,54 @@
 <menubar orient="vertical" sclass="sidebar"
 	apply="org.ufba.dcc.mata60.controller.SideBar"
-	id="menubar">
-	<menu label="Cadastrar" id="menu_cadastrar">
+	id="menubar" autodrop="true">
+	
+	<menu label="Cadastro" id="menu_cadastro">
 		<menupopup>
-			<menuitem label="Departamento" id="mc_departamento"/>
-			<menuitem label="Professor" id="mc_professor"/>
-			<menuitem label="Disciplina" id="mc_disciplina"/>
-			<menuitem label="Turma" id="mc_turma"/>
+		   <menu label="Departamento" id="menu_departamento">
+		   <menupopup>
+            <menuitem label="novo" id="mi_departamento_novo"/>
+            <menuitem label="listar" id="mi_departamento_listar"/>
+		   </menupopup>
+   	   </menu>
+   	   
+   	   <menu label="Professor" id="menu_professor">
+         <menupopup>
+            <menuitem label="novo" id="mi_professor_novo"/>
+            <menuitem label="listar" id="mi_professor_listar"/>
+         </menupopup>
+         </menu>
+         
+         <menu label="Disciplina" id="menu_disciplina">
+         <menupopup>
+            <menuitem label="novo" id="mi_disciplina_novo"/>
+            <menuitem label="listar" id="mi_disciplina_listar"/>
+         </menupopup>
+         </menu>
+         
+         <menu label="Turma" id="menu_turma">
+         <menupopup>
+            <menuitem label="novo" id="mi_turma_novo"/>
+            <menuitem label="listar" id="mi_turma_listar"/>
+            <menuitem label="inserir professor" id="mi_turma_cadastrar_professor"/>
+         </menupopup>
+         </menu>
 		</menupopup>
 	</menu>
+	
 	<menu label="Projeto" id="menu_projeto">
 		<menupopup>
-			<menuitem label="Novo" />
-			<menuitem label="Listar" />
+			<menuitem label="Novo" id="mi_projeto_novo"/>
+			<menuitem label="Listar" id="mi_projeto_listar"/>
 		</menupopup>
 	</menu>
+	
 	<menu label="Edital" id="menu_edital">
 		<menupopup>
-			<menuitem label="Novo" />
-			<menuitem label="Listar" />
+			<menuitem label="Novo" id="mi_edital_novo"/>
+			<menuitem label="Listar" id="mi_edital_listar"/>
 		</menupopup>
 	</menu>
+	
 	<menuitem label="Sair" id="menuitem_sair"/>
+	
 </menubar>
-
-

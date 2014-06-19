@@ -9,19 +9,14 @@ import java.util.ArrayList;
 
 public class DepartamentoDAO {
 	
-	private  Statement statement = null;
-	private  PreparedStatement preparedStatement = null;
-	private  ResultSet resultSet = null;
-
-	
 	public  ArrayList<Departamento> getAll() {
 		// Statements allow to issue SQL queries to the database
 		try {
 			
-			statement = DB.getConnectionDB().createStatement();
+			Statement statement = DB.getConnectionDB().createStatement();
 			
 			// Result set get the result of the SQL query
-			resultSet = statement.executeQuery("select * from "+DB.getDbName()+".departamento");
+			ResultSet resultSet = statement.executeQuery("select * from "+DB.getDbName()+".departamento");
 			
 			Departamento departamento = null;
 			ArrayList<Departamento> departamentos = new ArrayList<Departamento>();
@@ -60,7 +55,7 @@ public class DepartamentoDAO {
 
 	public  void insert(Departamento departamento) throws SQLException, Exception{
 		// PreparedStatements can use variables and are more efficient
-		preparedStatement = DB.getConnectionDB().prepareStatement("insert into " +
+		PreparedStatement preparedStatement = DB.getConnectionDB().prepareStatement("insert into " +
 			DB.getDbName()+".departamento values (default, ?)");
 
 		// Parameters start with 1

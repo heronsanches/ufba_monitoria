@@ -12,7 +12,6 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Button;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
@@ -23,11 +22,14 @@ public class CadastrarDisciplina extends SelectorComposer<Component>{
 	
     @Wire
     private Listbox listbox_departamentoNomes;
+    
     @Wire
     private Textbox nome;
+    
     @Wire
     private Textbox codigo_disciplina;
     
+  //<nome, cod> de departamento
     private Map<String, Integer> departamentos = new HashMap<String, Integer>();
     
 

@@ -1,0 +1,93 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+
+<zk>
+	<window border="normal" hflex="1" vflex="1"
+		contentStyle="overflow:auto"
+		apply="org.ufba.dcc.mata60.controller.CadastrarProfessorTurma">
+
+		<caption src="/imagens/icons/plus.png" sclass="fn-caption"
+			label="Cadastrar Professor para Turma" />
+
+		<vlayout hflex="1" sclass="pos20left">
+			<grid width="620px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">
+							Informe o nome do professor:
+						</cell>
+						<cell>
+							<combobox autodrop="true"
+								buttonVisible="false" width="430px" id="cbx_professor">
+							</combobox>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+
+
+			<grid width="620px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+					<column align="right" hflex="max" />
+					<column />
+					<column />
+				</columns>
+				<rows>
+				   <row><radiogroup id="rd_group_semestre"/></row>
+					<row>
+						<cell sclass="row-title">Ano:</cell>
+						<cell>
+							<intbox id="ano" maxlength="4" />
+						</cell>
+						<cell sclass="row-title">Semestre:</cell>
+						<radio label="1" radiogroup="rd_group_semestre"/>
+						<radio label="2" radiogroup="rd_group_semestre"/>
+					</row>
+				</rows>
+			</grid>
+
+			<grid width="620px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">
+							Informe nome da disciplina:
+						</cell>
+						<cell>
+							<combobox autodrop="true"
+								buttonVisible="false" width="430px" id="cbx_disciplina">
+							</combobox>
+						</cell>
+					</row>
+
+					<row>
+						<cell sclass="row-title">
+							Selecione a turma:
+						</cell>
+						<cell>
+							<listbox id="listbox_turma" width="430px">
+								<template name="model">
+									<listitem label="${each}" />
+								</template>
+							</listbox>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+
+			<hlayout>
+				<button id="btn_cadastrar" label="Cadastrar" />
+				<button id="btn_apagarCampos" label="Apagar Tudo" />
+			</hlayout>
+		</vlayout>
+	</window>
+
+</zk>

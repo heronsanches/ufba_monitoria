@@ -48,13 +48,6 @@ public class DB {
 		  "PRIMARY KEY (`cpf`),"+
 		  "UNIQUE INDEX `matricula_UNIQUE` (`matricula` ASC))"+
 		"ENGINE = InnoDB;";
-	
-	private static final String PROFESSOR_TIPO =
-		"CREATE TABLE IF NOT EXISTS "+DB_NAME+".`professor_tipo` ("+
-		  "`cod` INT NOT NULL AUTO_INCREMENT,"+
-		  "`descricao` VARCHAR(45) NOT NULL,"+
-		  "PRIMARY KEY (`cod`))"+
-		"ENGINE = InnoDB;";
 
 	private static final String PROFESSOR = 
 		"CREATE TABLE IF NOT EXISTS "+DB_NAME+".`professor` ("+
@@ -62,21 +55,16 @@ public class DB {
 		  "`matricula` VARCHAR(20) NOT NULL,"+
 		  "`nome` VARCHAR(45) NOT NULL,"+
 		  "`departamento_cod` INT NOT NULL,"+
-		  "`professor_tipo_cod` INT NOT NULL,"+
+		  "`tipo` VARCHAR(4) NOT NULL,"+
 		  "PRIMARY KEY (`cpf`),"+
 		  "UNIQUE INDEX `matricula_UNIQUE` (`matricula` ASC),"+
 		  "INDEX `fk_professor_departamento1_idx` (`departamento_cod` ASC),"+
-		  "INDEX `fk_professor_professor_tipo1_idx` (`professor_tipo_cod` ASC),"+
 		  "CONSTRAINT `fk_professor_departamento1`"+
 		    "FOREIGN KEY (`departamento_cod`)"+
 		    "REFERENCES "+DB_NAME+".`departamento` (`cod`)"+
 		    "ON DELETE NO ACTION\n"+
 		    "ON UPDATE NO ACTION,"+
-		  "CONSTRAINT `fk_professor_professor_tipo1`"+
-		    "FOREIGN KEY (`professor_tipo_cod`)"+
-		    "REFERENCES "+DB_NAME+".`professor_tipo` (`cod`)"+
-		    "ON DELETE NO ACTION\n"+
-		    "ON UPDATE NO ACTION)"+
+		    "CHECK(tipo in(\"DE\", \"20H\", \"40H\")))"+ //TODO esta restrição não funciona!
 		"ENGINE = InnoDB;";
 	
 	private static final String TURMA = 
@@ -87,7 +75,7 @@ public class DB {
 		  "`data_inicio` DATE NULL,"+
 		  "`semestre` VARCHAR(6) NOT NULL,"+
 		  "`disciplina_cod` VARCHAR(10) NOT NULL,"+
-		  "PRIMARY KEY (`numero`),"+
+		  "PRIMARY KEY (`numero`, `disciplina_cod`, `semestre`),"+
 		  "INDEX `fk_turma_disciplina1_idx` (`disciplina_cod` ASC),"+
 		  "CONSTRAINT `fk_turma_disciplina1`"+
 		    "FOREIGN KEY (`disciplina_cod`)"+
@@ -104,12 +92,14 @@ public class DB {
 		  "`descricao` TEXT NOT NULL,"+
 		  "`turma_numero` VARCHAR(6) NOT NULL,"+
 		  "`professor_cpf` VARCHAR(11) NOT NULL,"+
+		  "`turma_disciplina_cod` VARCHAR(10) NOT NULL,"+
+		  "`turma_semestre` VARCHAR(6) NOT NULL,"+
 		  "PRIMARY KEY (`cod`),"+
-		  "INDEX `fk_projeto_turma1_idx` (`turma_numero` ASC),"+
+		  "INDEX `fk_projeto_turma1_idx` (`turma_numero` ASC, `turma_disciplina_cod` ASC, `turma_semestre` ASC),"+
 		  "INDEX `fk_projeto_professor1_idx` (`professor_cpf` ASC),"+
 		  "CONSTRAINT `fk_projeto_turma1`"+
-		    "FOREIGN KEY (`turma_numero`)"+
-		    "REFERENCES "+DB_NAME+".`turma` (`numero`)"+
+		    "FOREIGN KEY (`turma_numero` , `turma_disciplina_cod` , `turma_semestre`)"+
+		    "REFERENCES "+DB_NAME+".`turma` (`numero` , `disciplina_cod` , `semestre`)"+
 		    "ON DELETE NO ACTION\n"+
 		    "ON UPDATE NO ACTION,"+
 		  "CONSTRAINT `fk_projeto_professor1`"+
@@ -220,12 +210,14 @@ public class DB {
 		"CREATE TABLE IF NOT EXISTS "+DB_NAME+".`turma_lecionada_professor` ("+
 		  "`turma_numero` VARCHAR(6) NOT NULL,"+
 		  "`professor_cpf` VARCHAR(11) NOT NULL,"+
-		  "PRIMARY KEY (`turma_numero`, `professor_cpf`),"+
+		  "`turma_disciplina_cod` VARCHAR(10) NOT NULL,"+
+		  "`turma_semestre` VARCHAR(6) NOT NULL,"+
+		  "PRIMARY KEY (`professor_cpf`, `turma_numero`, `turma_disciplina_cod`, `turma_semestre`),"+
 		  "INDEX `fk_turma_has_professor_professor1_idx` (`professor_cpf` ASC),"+
-		  "INDEX `fk_turma_has_professor_turma1_idx` (`turma_numero` ASC),"+
+		  "INDEX `fk_turma_has_professor_turma1_idx` (`turma_numero` ASC, `turma_disciplina_cod` ASC, `turma_semestre` ASC),"+
 		  "CONSTRAINT `fk_turma_has_professor_turma1`"+
-		    "FOREIGN KEY (`turma_numero`)"+
-		    "REFERENCES "+DB_NAME+".`turma` (`numero`)"+
+		    "FOREIGN KEY (`turma_numero` , `turma_disciplina_cod` , `turma_semestre`)"+
+		    "REFERENCES "+DB_NAME+".`turma` (`numero` , `disciplina_cod` , `semestre`)"+
 		    "ON DELETE NO ACTION\n"+
 		    "ON UPDATE NO ACTION,"+
 		  "CONSTRAINT `fk_turma_has_professor_professor1`"+
@@ -234,7 +226,6 @@ public class DB {
 		    "ON DELETE NO ACTION\n"+
 		    "ON UPDATE NO ACTION)"+
 		"ENGINE = InnoDB;";
-	
 	
 	private static final String MONITOR = 
 		"CREATE TABLE IF NOT EXISTS "+DB_NAME+".`monitor` ("+
@@ -368,7 +359,7 @@ public class DB {
 			statement.addBatch(DEPARTAMENTO);
 			statement.addBatch(DISCIPLINA);
 			statement.addBatch(ALUNO);
-			statement.addBatch(PROFESSOR_TIPO);
+			//statement.addBatch(PROFESSOR_TIPO);
 			statement.addBatch(PROFESSOR);
 			statement.addBatch(TURMA);
 			statement.addBatch(PROJETO);

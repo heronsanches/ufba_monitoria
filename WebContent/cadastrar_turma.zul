@@ -18,37 +18,41 @@
                <row>
                   <cell sclass="row-title">Número:</cell>
                   <cell>
-                     <textbox id="numero" width="200px" />
+                     <intbox id="numero" maxlength="6" width="200px" />
                   </cell>
                  </row>
                    <row>
                   <cell sclass="row-title">Hora Inicio:</cell>
                   <cell>
-                     <textbox id="hora_inicio" width="200px" />
+                     <timebox id="hora_inicio" width="200px"/>
                   </cell>
                </row>
                 <row>
                   <cell sclass="row-title">Hora Fim:</cell>
                   <cell>
-                     <textbox id="hora_fim" width="200px" />
+                     <timebox id="hora_fim" width="200px"/>
                   </cell>
                </row>
                <row>
                   <cell sclass="row-title">Data Inicio:</cell>
                   <cell>
-                     <datebox id="data_inicio"/>
+                     <datebox id="data_inicio" width="200px"/>
                   </cell>
                </row>
-               <row>
-                  <cell sclass="row-title">Semestre:</cell>
-                  <cell>
-                     <textbox id="semestre" width="200px" />
-                  </cell>
-               </row>
-               <row>
+               </rows>
+              </grid>
+              
+              <grid width="500px">
+               <columns>
+                  <column align="right" hflex="min" />
+                  <column />
+               </columns>
+               <rows>
+                  <row>
                   <cell sclass="row-title">Disciplina:</cell>
                   <cell>
-                     <listbox id="listbox_disciplinaNomes" mold="select">
+                     <listbox id="listbox_disciplinaNomes" mold="select"
+                        width="200px">
                         <template name="model">
                          <listitem label="${each}"/>
                         </template>
@@ -57,10 +61,29 @@
                </row>
                </rows>
             </grid>
+              
+              <grid width="500px">
+               <columns>
+                  <column align="right" hflex="min" />
+                  <column />
+                  <column align="right" hflex="min" />
+                  <column />
+               </columns>
+               <rows> 
+               <row>
+                    <cell sclass="row-title">Ano:</cell>
+                    <cell><intbox id="ano" maxlength="4"/></cell>
+                    <cell sclass="row-title">Semestre:</cell>
+                    <cell><intbox id="semestre" maxlength="1"/></cell>      
+               </row>
+               </rows>
+               </grid>
+               
+               
  
          <hlayout>
-            <button id="saveProfile" label="Cadastrar" />
-            <button id="reloadProfile" label="Apagar Tudo" />
+            <button id="btn_cadastrar" label="Cadastrar" />
+            <button id="btn_apagarCampos" label="Apagar Tudo" />
          </hlayout>
       </vlayout>
    </window>

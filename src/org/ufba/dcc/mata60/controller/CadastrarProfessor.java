@@ -6,19 +6,36 @@ import java.util.Map;
 
 import org.ufba.dcc.mata60.model.Departamento;
 import org.ufba.dcc.mata60.model.DepartamentoDAO;
+import org.ufba.dcc.mata60.model.Professor;
+import org.ufba.dcc.mata60.model.ProfessorDAO;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Radio;
+import org.zkoss.zul.Radiogroup;
+import org.zkoss.zul.Textbox;
 
 public class CadastrarProfessor extends SelectorComposer<Component>{
 
 	private static final long serialVersionUID = 1L;
 	
-    @Wire
+	@Wire
+	Textbox nome;
+
+	@Wire
+	Textbox matricula;
+	
+	@Wire
+	Textbox cpf;
+	
+	@Wire
     private Listbox listbox_departamentoNomes;
+	
+	@Wire
+	private Radiogroup rd_group_tipoProfessores;
     
     private Map<String, Integer> departamentos = new HashMap<String, Integer>();
     
@@ -50,10 +67,19 @@ public class CadastrarProfessor extends SelectorComposer<Component>{
     
     }
     
-    @Listen("onClick = #btn_cadastrarProfessor")
+    @Listen("onClick = #btn_cadastrar")
 	public void cadastrarProfessor(){
 		
-	//TODO
+		ProfessorDAO professorDAO = new ProfessorDAO();
+		Professor professor = new Professor();
+		
+		professor.setCpf(cpf.getValue());
+		professor.setDepartamento_cod(departamentos.get(listbox_departamentoNomes.getSelectedItem().getValue()));
+		professor.setMatricula(matricula.getValue());
+		professor.setNome(nome.getValue());
+		professor.setTipo(rd_group_tipoProfessores.getSelectedItem().getLabel());
+		
+		professorDAO.insert(professor);
 		
 	}
     
