@@ -10,7 +10,9 @@ import java.util.ArrayList;
 public class ProfessorDAO {
 	
 	
-	public void insert(Professor professor){
+	public int insert(Professor professor){
+		
+		int count = 0;
 
 		try {
 			
@@ -23,7 +25,7 @@ public class ProfessorDAO {
 			preparedStatement.setInt(4, professor.getDepartamento_cod());
 			preparedStatement.setString(5, professor.getTipo());
 			
-			preparedStatement.executeUpdate(); // update
+			count = preparedStatement.executeUpdate(); // update
 			preparedStatement.close();
 		
 		} catch (SQLException e) {
@@ -37,6 +39,8 @@ public class ProfessorDAO {
 			e.printStackTrace();
 			
 		}
+		
+		return count;
 		
 	}
 	

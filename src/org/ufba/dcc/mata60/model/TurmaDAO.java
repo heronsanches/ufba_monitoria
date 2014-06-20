@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 public class TurmaDAO {
 	
-	public void insert(Turma turma){
+	public int insert(Turma turma){
+		
+		int count = 0;
 
 		try {
 			
@@ -24,7 +26,7 @@ public class TurmaDAO {
 			preparedStatement.setString(5, turma.getSemestre());
 			preparedStatement.setString(6, turma.getDisciplina_cod());
 			
-			preparedStatement.executeUpdate(); // update
+			count = preparedStatement.executeUpdate(); // update
 			preparedStatement.close();
 		
 		} catch (SQLException e) {
@@ -38,6 +40,8 @@ public class TurmaDAO {
 			e.printStackTrace();
 			
 		}
+		
+		return count;
 		
 	}
 	

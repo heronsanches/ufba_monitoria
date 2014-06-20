@@ -16,10 +16,13 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Combobox;
+import org.zkoss.zul.Comboitem;
 import org.zkoss.zul.Intbox;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.ListModels;
 import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Popup;
 import org.zkoss.zul.Radiogroup;
 
 public class CadastrarProfessorTurma extends SelectorComposer<Component>{
@@ -70,7 +73,7 @@ public class CadastrarProfessorTurma extends SelectorComposer<Component>{
 	  }
 	 
 
-	@Override
+	 @Override
 	public void doAfterCompose(Component comp) throws Exception {
 
 		super.doAfterCompose(comp);
@@ -94,7 +97,7 @@ public class CadastrarProfessorTurma extends SelectorComposer<Component>{
 		
 		for(Turma t: turmas){
 			
-			turmasInformacoes.add(t.getNumero()+" #inicio: "+t.getData_inicio()+" horario: "+
+			turmasInformacoes.add(t.getNumero()+" --- inicio: "+t.getData_inicio()+" --- horario: "+
 					((Time)t.getHora_inicio()).toString()+" / "+((Time)t.getHora_fim()).toString());
 			
 		}
@@ -114,15 +117,18 @@ public class CadastrarProfessorTurma extends SelectorComposer<Component>{
 		String turma_semestre = ano.getValue().toString()+"."+rd_group_semestre.getSelectedItem().getLabel();
 		String turma_disciplina_cod = cbx_disciplina.getSelectedItem().getLabel().split("-")[1].trim();
 		String professor_cpf = cbx_professor.getSelectedItem().getLabel().split("-")[1].trim();
-		//TODO "data too long when insert"String turma_numero = listbox_turma.getSelectedItem().getLabel().split("#")[0].trim();
-		//turma_numero = turma_numero.split("#")[0].trim();
-		
-		/*turmaLecionadaProfessorDAO.insert(professor_cpf, turma_numero,
-				turma_disciplina_cod, turma_semestre);*/
+		String turma_numero = listbox_turma.getSelectedItem().getLabel().split("-")[0].trim();
+				
+		if(turmaLecionadaProfessorDAO.insert(turma_numero, professor_cpf, 
+				turma_disciplina_cod, turma_semestre) > 0){
+			
+			Mensagem.sucesso();
+			//TODO clear(); 
+			
+		}else
+			Mensagem.insucesso();
 		
 	}
-	
-	
-	 
+ 
 
 }

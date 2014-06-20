@@ -73,7 +73,7 @@
 							Selecione a turma:
 						</cell>
 						<cell>
-							<listbox id="listbox_turma" width="430px">
+							<listbox id="listbox_turma" width="430px" >
 								<template name="model">
 									<listitem label="${each}" />
 								</template>

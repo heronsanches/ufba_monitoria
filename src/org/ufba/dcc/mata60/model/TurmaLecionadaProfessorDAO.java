@@ -5,23 +5,25 @@ import java.sql.SQLException;
 
 public class TurmaLecionadaProfessorDAO {
 	
-	public void insert(String professor_cpf, String turma_numero, String turma_disciplina_cod,
+	public int insert(String turma_numero, String professor_cpf,  String turma_disciplina_cod,
 			String turma_semestre){
-		// PreparedStatements can use variables and are more efficient
+		
+		int count = 0;
+
 		try {
 			
 			PreparedStatement preparedStatement = DB.getConnectionDB().prepareStatement("insert into " +
 				DB.getDbName()+".turma_lecionada_professor values (?, ?, ?, ?)");
 		
-			// Parameters start with 1
-			preparedStatement.setString(1, professor_cpf);
-			preparedStatement.setString(2, turma_numero);
+			preparedStatement.setString(1, turma_numero);
+			preparedStatement.setString(2, professor_cpf);
 			preparedStatement.setString(3, turma_disciplina_cod);
 			preparedStatement.setString(4, turma_semestre);
 
 			
-			preparedStatement.executeUpdate(); // update
+			count = preparedStatement.executeUpdate();
 			preparedStatement.close();
+			
 		
 		} catch (SQLException e) {
 			
@@ -34,6 +36,8 @@ public class TurmaLecionadaProfessorDAO {
 			e.printStackTrace();
 			
 		}
+		
+		return count;
 		
 	}
 

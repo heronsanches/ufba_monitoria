@@ -14,7 +14,7 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Radio;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Radiogroup;
 import org.zkoss.zul.Textbox;
 
@@ -79,7 +79,13 @@ public class CadastrarProfessor extends SelectorComposer<Component>{
 		professor.setNome(nome.getValue());
 		professor.setTipo(rd_group_tipoProfessores.getSelectedItem().getLabel());
 		
-		professorDAO.insert(professor);
+		if(professorDAO.insert(professor) > 0){
+			
+			Mensagem.sucesso();
+			//TODO clear();
+			
+		}else
+			Mensagem.insucesso();
 		
 	}
     

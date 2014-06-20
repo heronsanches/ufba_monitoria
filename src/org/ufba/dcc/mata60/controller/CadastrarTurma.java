@@ -87,7 +87,13 @@ public class CadastrarTurma extends SelectorComposer<Component>{
 	    	turma.setNumero(numero.getValue().toString());
 	    	turma.setSemestre(ano.getValue().toString() +"."+ semestre.getValue().toString());
 	    	
-	    	turmaDAO.insert(turma);
+	    	if(turmaDAO.insert(turma) > 0){
+	    		
+	    		Mensagem.sucesso();
+	    		//TODO clear();
+	    		
+	    	}else
+	    		Mensagem.insucesso();
 	    	
 	    }
 	 

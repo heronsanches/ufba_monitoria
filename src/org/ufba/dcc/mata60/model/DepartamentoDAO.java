@@ -10,12 +10,11 @@ import java.util.ArrayList;
 public class DepartamentoDAO {
 	
 	public  ArrayList<Departamento> getAll() {
-		// Statements allow to issue SQL queries to the database
+
 		try {
 			
 			Statement statement = DB.getConnectionDB().createStatement();
 			
-			// Result set get the result of the SQL query
 			ResultSet resultSet = statement.executeQuery("select * from "+DB.getDbName()+".departamento");
 			
 			Departamento departamento = null;
@@ -53,17 +52,36 @@ public class DepartamentoDAO {
 	}
 
 
-	public  void insert(Departamento departamento) throws SQLException, Exception{
-		// PreparedStatements can use variables and are more efficient
-		PreparedStatement preparedStatement = DB.getConnectionDB().prepareStatement("insert into " +
-			DB.getDbName()+".departamento values (default, ?)");
+	public  int insert(Departamento departamento){
 
-		// Parameters start with 1
-		preparedStatement.setString(1, departamento.getNome());
+		int count = 0;
+		PreparedStatement preparedStatement;
+			
+			try {
+				
+				preparedStatement = DB.getConnectionDB().prepareStatement("insert into " +
+					DB.getDbName()+".departamento values (default, ?)");
+				
+				preparedStatement.setString(1, departamento.getNome());
 
-		preparedStatement.executeUpdate(); // update
-		
-		preparedStatement.close();
+				count = preparedStatement.executeUpdate();
+				
+				preparedStatement.close();
+				
+			} catch (SQLException e) {
+				
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			} catch (Exception e) {
+				
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			
+			return count;
+			
 	}
 
 	/*

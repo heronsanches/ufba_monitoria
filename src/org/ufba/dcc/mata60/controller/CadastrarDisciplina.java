@@ -14,6 +14,7 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 
 public class CadastrarDisciplina extends SelectorComposer<Component>{
@@ -71,7 +72,14 @@ public class CadastrarDisciplina extends SelectorComposer<Component>{
     		listbox_departamentoNomes.getSelectedItem().getValue()));
     	disciplina.setNome(nome.getValue());
     	
-    	disciplinaDAO.insert(disciplina);
+    	if(disciplinaDAO.insert(disciplina) > 0){
+    		
+    		Mensagem.sucesso();
+    		//TODO clear();
+    		
+    	}else
+			Mensagem.insucesso();
+		
     	
     }
     
