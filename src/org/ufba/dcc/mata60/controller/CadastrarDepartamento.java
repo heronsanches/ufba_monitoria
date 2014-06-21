@@ -6,10 +6,13 @@ import org.ufba.dcc.mata60.model.Departamento;
 import org.ufba.dcc.mata60.model.DepartamentoDAO;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
+import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Include;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Window;
 
 
 public class CadastrarDepartamento extends SelectorComposer<Component>{
@@ -18,6 +21,16 @@ public class CadastrarDepartamento extends SelectorComposer<Component>{
 	
 	@Wire
 	private Textbox nome;
+	
+	
+	private void atualizar(){
+		
+		Include include = (Include)Selectors.iterable(nome.getPage(), "#mainInclude").iterator().next();
+	    include.setSrc(null);
+	    include.setSrc("/template_departamento.zul");
+		
+	}
+	
 	
 	@Listen("onClick = #btn_cadastrar")
 	public void cadastrar() throws SQLException, Exception{
@@ -28,8 +41,8 @@ public class CadastrarDepartamento extends SelectorComposer<Component>{
 		
 		if(departamentoDAO.insert(departamento) > 0){
 			
-			Mensagem.sucesso();			
-			//TODO clear();
+			Mensagem.sucesso();
+			atualizar();
 			
 		}else
 			Mensagem.insucesso();

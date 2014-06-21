@@ -1,5 +1,6 @@
 package org.ufba.dcc.mata60.model;
 
+
 public class Departamento {
 
 	private int cod;
@@ -22,6 +23,7 @@ public class Departamento {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	
 	
 }

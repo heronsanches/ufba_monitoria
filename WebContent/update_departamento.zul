@@ -1,0 +1,35 @@
+<zk>
+   <window id="modalDialog" title="Editar Departamento" border="normal" width="420px"
+    position="center,top" closable="true" 
+    action="show: slideDown;hide: slideUp">
+   <vlayout hflex="1">
+
+      <listbox id="listar_departamento_selecionado" width="400px">
+      <listhead >
+         <listheader label="cod"/>
+         <listheader label="nome"/>
+      </listhead>
+      </listbox>
+      
+      <grid width="400px">
+         <columns>
+            <column align="right" hflex="min" />
+            <column  />
+         </columns>
+         <rows>
+            <row>
+               <cell sclass="row-title">Novo nome:</cell>
+               <cell>
+                  <textbox id="novo_nome" width="310px"/>
+               </cell>
+            </row>
+         </rows>
+      </grid>
+
+      <hlayout >
+           <button label="ok" id="btn_ok"/>
+      </hlayout> 
+   </vlayout>
+
+   </window>
+</zk>

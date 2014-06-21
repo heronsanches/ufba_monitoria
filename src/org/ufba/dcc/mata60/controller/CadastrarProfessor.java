@@ -49,6 +49,7 @@ public class CadastrarProfessor extends SelectorComposer<Component>{
 	        
 	}
 
+	/*
     @Override
     public void doAfterCompose(Component comp) throws Exception{
           
@@ -65,7 +66,7 @@ public class CadastrarProfessor extends SelectorComposer<Component>{
      
     	listbox_departamentoNomes.setModel(modelDepartamentos);
     
-    }
+    }*/
     
     @Listen("onClick = #btn_cadastrar")
 	public void cadastrarProfessor(){

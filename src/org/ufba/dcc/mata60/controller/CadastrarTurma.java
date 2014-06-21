@@ -55,7 +55,7 @@ public class CadastrarTurma extends SelectorComposer<Component>{
 	    		disciplinas.put(dis.getNome(), dis.getCod());
 	        
 	    }
-
+/*
 	    @Override
 	    public void doAfterCompose(Component comp) throws Exception{
 	          
@@ -72,7 +72,7 @@ public class CadastrarTurma extends SelectorComposer<Component>{
 	     
 	    	listbox_disciplinaNomes.setModel(modelDisciplinas);
 	    
-	    }
+	    }*/
 	    
 	    @Listen("onClick = #btn_cadastrar")
 	    public void cadastrarTurma(){

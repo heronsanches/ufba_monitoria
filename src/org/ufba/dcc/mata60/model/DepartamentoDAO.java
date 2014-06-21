@@ -84,21 +84,71 @@ public class DepartamentoDAO {
 			
 	}
 
-	/*
-	public  void updateOne(Loc loc) throws SQLException, Exception{
+	
+	public  int updateOne(Departamento departamento){
 		
-		preparedStatement = DB.getConnectionDB().prepareStatement("update mydb.loc set quantity=?"
-				+ ", idLastCommit=?"+ ", dateLastCommit=? where id=?");
+		int count = 0;
+		
+		try {
+			
+			PreparedStatement preparedStatement;
+			preparedStatement = DB.getConnectionDB().prepareStatement("update "+DB.getDbName()+".departamento set nome=?"
+					+ " where cod=?");
+			
+			preparedStatement.setString(1, departamento.getNome());
+			preparedStatement.setInt(2, departamento.getCod());
 
-		preparedStatement.setInt(1, loc.getQuantity());
-		preparedStatement.setString(2, loc.getIdLastCommit());
-		preparedStatement.setLong(2, loc.getDateLastCommit());
-		preparedStatement.setInt(4, loc.getId());
-		
-		preparedStatement.executeUpdate(); // update
-		
-		preparedStatement.close();
+			count = preparedStatement.executeUpdate();
+			
+			preparedStatement.close();
+			
+		} catch (SQLException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} catch (Exception e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
 
-	}*/
+		return count;
+
+	}
+	
+	
+public  int deleteOne(Departamento departamento){
+		
+		int count = 0;
+		
+		try {
+			
+			PreparedStatement preparedStatement;
+			preparedStatement = DB.getConnectionDB().prepareStatement("delete from "+DB.getDbName()+".departamento "
+					+ "where cod=?");
+			
+			preparedStatement.setInt(1, departamento.getCod());
+
+			count = preparedStatement.executeUpdate();
+			
+			preparedStatement.close();
+			
+		} catch (SQLException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} catch (Exception e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+
+		return count;
+
+	}
 
 }

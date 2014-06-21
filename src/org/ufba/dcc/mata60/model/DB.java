@@ -81,7 +81,7 @@ public class DB {
 		    "FOREIGN KEY (`disciplina_cod`)"+
 		    "REFERENCES "+DB_NAME+".`disciplina` (`cod`)"+
 		    "ON DELETE NO ACTION\n"+
-		    "ON UPDATE NO ACTION)"+
+		    "ON UPDATE CASCADE)"+
 		"ENGINE = InnoDB;";
 	
 	private static final String PROJETO = 

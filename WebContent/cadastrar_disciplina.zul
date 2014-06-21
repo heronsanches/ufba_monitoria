@@ -1,12 +1,8 @@
 <?link rel="stylesheet" type="text/css" href="/style.css"?>
    <window border="normal" hflex="1" vflex="1"
-      contentStyle="overflow:auto"
+      mode="embedded"
       apply="org.ufba.dcc.mata60.controller.CadastrarDisciplina">
-     
-      <caption src="/imagens/icons/plus.png" sclass="fn-caption"
-         label="Disciplina" />
          
-      
       <vlayout hflex="1" sclass="pos20left">
          <grid width="500px">
             <columns>
@@ -23,17 +19,13 @@
                    <row>
                   <cell sclass="row-title">Código:</cell>
                   <cell>
-                     <textbox id="codigo_disciplina" width="200px" />
+                     <textbox id="codigo_disciplina" width="200px" maxlength="10"/>
                   </cell>
                </row>
                <row>
                   <cell sclass="row-title">Departamento:</cell>
                   <cell>
-                     <listbox id="listbox_departamentoNomes" mold="select">
-                        <template name="model">
-                         <listitem label="${each}"/>
-                        </template>
-                     </listbox>
+                  <combobox id="cbx_departamento" autodrop="true"/>
                   </cell>
                </row>
                </rows>

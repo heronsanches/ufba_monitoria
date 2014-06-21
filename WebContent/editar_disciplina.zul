@@ -1,0 +1,77 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+
+<zk>
+	<window border="normal" hflex="1" vflex="1"
+		contentStyle="overflow:auto"
+		apply="org.ufba.dcc.mata60.controller.EditarDisciplina">
+
+		<vlayout hflex="1" sclass="pos20left">
+			<grid width="700px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">
+							Informe o nome da disciplina:
+						</cell>
+						<cell>
+							<combobox autodrop="true"
+								buttonVisible="false" width="430px" id="cbx_disciplina">
+							</combobox>
+						</cell>
+					</row>
+					</rows>
+			</grid>
+
+			<grid width="700px">
+				<rows>
+               <row>
+                  <listbox id="listar_disciplina">
+
+                  </listbox>
+               </row>
+				</rows>
+			</grid>
+
+
+			<grid width="700px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">Novo nome:</cell>
+						<cell>
+							<textbox id="novoNome" width="430px" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Novo Código:</cell>
+						<cell>
+							<textbox id="codigo_disciplina"
+								width="430px" maxlength="10" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">
+							Novo departamento:
+						</cell>
+						<cell>
+							<combobox autodrop="true"
+								buttonVisible="false" width="430px" id="cbx_departamento">
+							</combobox>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+
+			<hlayout>
+				<button id="btn_atualizar" label="atualizar" />
+			</hlayout>
+		</vlayout>
+	</window>
+
+</zk>
