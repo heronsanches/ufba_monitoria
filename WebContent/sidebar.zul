@@ -10,6 +10,10 @@
 	</listitem>
 	
 	<listitem >
+		<listcell id="listcell_aluno" label="Aluno" />
+	</listitem>
+	
+	<listitem >
       <listcell id="listcell_disciplina" label="Disciplina" />
    </listitem>
    

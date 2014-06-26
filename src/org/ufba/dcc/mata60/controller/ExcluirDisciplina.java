@@ -69,51 +69,53 @@ public class ExcluirDisciplina extends SelectorComposer<Component>{
 	
 	
 	@Listen("onSelect = #cbx_disciplina")
-	   public void criaLista(){
-		   
-		   DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
-	       Disciplina disciplina = disciplinaDAO.getOne(
-	    		   cbx_disciplina.getSelectedItem().getLabel().split("-")[1].trim());
-	       
-	       //remove filhos da listbox
-	       listar_disciplina.getItems().clear();
-	       
-	       ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
-	       disciplinas.add(disciplina);
-	       
-	       ListModelList<Disciplina> disciplinaModel = new ListModelList<Disciplina>(disciplinas);
-	       //cria model
-	       listar_disciplina.setModel(disciplinaModel);
-	       
-	       //recria listbox
-	       try {
-			
-	    	   Listhead lh = new Listhead();
-	           lh.appendChild(new Listheader("cod"));
-	           lh.appendChild(new Listheader("nome"));
-	           lh.appendChild(new Listheader("departamento_cod"));
-	           listar_disciplina.appendChild(lh);
-	           
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		       
-	       listar_disciplina.setItemRenderer(new ListitemRenderer() {
+	public void criaLista() {
 
-				@Override
-				public void render(Listitem listitem, Object data, int arg2)
-						throws Exception {
-					
-					final Disciplina disc = (Disciplina)data;
-					
-					new Listcell(disc.getCod()).setParent(listitem);
-					new Listcell(disc.getNome()).setParent(listitem);
-					new Listcell(String.valueOf(disc.getDepartamento_cod())).setParent(listitem);
-					
-				}
-			});
-		   
-	   }
+		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+		Disciplina disciplina = disciplinaDAO.getOne(cbx_disciplina
+				.getSelectedItem().getLabel().split("-")[1].trim());
+
+		// remove filhos da listbox
+		listar_disciplina.getItems().clear();
+
+		ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
+		disciplinas.add(disciplina);
+
+		ListModelList<Disciplina> disciplinaModel = new ListModelList<Disciplina>(
+				disciplinas);
+		// cria model
+		listar_disciplina.setModel(disciplinaModel);
+
+		// recria listbox
+		try {
+
+			Listhead lh = new Listhead();
+			lh.appendChild(new Listheader("cod"));
+			lh.appendChild(new Listheader("nome"));
+			lh.appendChild(new Listheader("departamento_cod"));
+			listar_disciplina.appendChild(lh);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		listar_disciplina.setItemRenderer(new ListitemRenderer() {
+
+			@Override
+			public void render(Listitem listitem, Object data, int arg2)
+					throws Exception {
+
+				final Disciplina disc = (Disciplina) data;
+
+				new Listcell(disc.getCod()).setParent(listitem);
+				new Listcell(disc.getNome()).setParent(listitem);
+				new Listcell(String.valueOf(disc.getDepartamento_cod()))
+						.setParent(listitem);
+
+			}
+		});
+
+	}
 
 	
 	

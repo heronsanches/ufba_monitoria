@@ -32,6 +32,8 @@ public class SideBar extends SelectorComposer<Component>{
 	    	case "listcell_professor":  locationUri = "/template_professor.zul";
     			break;
 	    		
+	    	case "listcell_aluno": locationUri = "/template_aluno.zul";
+	    		break;
 	    	case "listcell_disciplina":  locationUri = "/template_disciplina.zul";
     			break;
     		

@@ -12,8 +12,6 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Include;
 import org.zkoss.zul.Textbox;
 
-import com.sun.xml.internal.fastinfoset.algorithm.BuiltInEncodingAlgorithm.WordListener;
-
 
 public class CadastrarDepartamento extends SelectorComposer<Component>{
 
