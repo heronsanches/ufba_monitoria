@@ -1,6 +1,5 @@
 <?link rel="stylesheet" type="text/css" href="/style.css"?>
    <window border="normal" hflex="1" vflex="1"
-      mode="embedded"
       apply="org.ufba.dcc.mata60.controller.CadastrarDisciplina">
          
       <vlayout hflex="1" sclass="pos20left">

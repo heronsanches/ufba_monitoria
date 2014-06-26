@@ -4,12 +4,8 @@
       contentStyle="overflow:auto"
       apply="org.ufba.dcc.mata60.controller.CadastrarTurma">
       
-      <caption src="/imagens/icons/plus.png" sclass="fn-caption"
-         label="Turma" />
-         
-      
       <vlayout hflex="1" sclass="pos20left">
-         <grid width="500px">
+         <grid width="700px">
             <columns>
                <column align="right" hflex="min" />
                <column />
@@ -18,31 +14,31 @@
                <row>
                   <cell sclass="row-title">Número:</cell>
                   <cell>
-                     <intbox id="numero" maxlength="6" width="200px" />
+                     <intbox id="numero" maxlength="6" width="430px" />
                   </cell>
                  </row>
                    <row>
                   <cell sclass="row-title">Hora Inicio:</cell>
                   <cell>
-                     <timebox id="hora_inicio" width="200px"/>
+                     <timebox id="hora_inicio" width="430px"/>
                   </cell>
                </row>
                 <row>
                   <cell sclass="row-title">Hora Fim:</cell>
                   <cell>
-                     <timebox id="hora_fim" width="200px"/>
+                     <timebox id="hora_fim" width="430px"/>
                   </cell>
                </row>
                <row>
                   <cell sclass="row-title">Data Inicio:</cell>
                   <cell>
-                     <datebox id="data_inicio" width="200px"/>
+                     <datebox id="data_inicio" width="430px"/>
                   </cell>
                </row>
                </rows>
               </grid>
               
-              <grid width="500px">
+              <grid width="700px">
                <columns>
                   <column align="right" hflex="min" />
                   <column />
@@ -51,18 +47,13 @@
                   <row>
                   <cell sclass="row-title">Disciplina:</cell>
                   <cell>
-                     <listbox id="listbox_disciplinaNomes" mold="select"
-                        width="200px">
-                        <template name="model">
-                         <listitem label="${each}"/>
-                        </template>
-                     </listbox>
+                     <combobox id="cbx_disciplina" autodrop="true" width="430px"/>
                   </cell>
                </row>
                </rows>
             </grid>
               
-              <grid width="500px">
+              <grid width="700px">
                <columns>
                   <column align="right" hflex="min" />
                   <column />

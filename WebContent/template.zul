@@ -1,7 +1,7 @@
 <zk>
 
 	<borderlayout hflex="1" vflex="1"
-		apply="org.ufba.dcc.mata60.controller.Index"
+	   apply="org.ufba.dcc.mata60.controller.Index"
 		if="${not sessionScope.userCredential.anonymous}" id="mainBorder"
 		sclass="banner">
 		<north height="50px" border="none">

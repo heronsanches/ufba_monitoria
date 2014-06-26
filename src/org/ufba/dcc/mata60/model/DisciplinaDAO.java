@@ -122,7 +122,7 @@ public class DisciplinaDAO {
 	}
 	
 	
-public  int updateOne(Disciplina disciplina){
+	public  int updateOne(Disciplina disciplina){
 		
 		int count = 0;
 		
@@ -158,37 +158,37 @@ public  int updateOne(Disciplina disciplina){
 	}
 
 
-public  int deleteOne(String cod){
+	public  int deleteOne(String cod){
 	
-	int count = 0;
+		int count = 0;
+		
+		try {
+			
+			PreparedStatement preparedStatement;
+			preparedStatement = DB.getConnectionDB().prepareStatement("delete from "+DB.getDbName()+".disciplina "
+					+ "where cod=?");
+			
+			preparedStatement.setString(1, cod);
 	
-	try {
-		
-		PreparedStatement preparedStatement;
-		preparedStatement = DB.getConnectionDB().prepareStatement("delete from "+DB.getDbName()+".disciplina "
-				+ "where cod=?");
-		
-		preparedStatement.setString(1, cod);
+			count = preparedStatement.executeUpdate();
+			
+			preparedStatement.close();
+			
+		} catch (SQLException e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} catch (Exception e) {
+			
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+	
+		return count;
 
-		count = preparedStatement.executeUpdate();
-		
-		preparedStatement.close();
-		
-	} catch (SQLException e) {
-		
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		
-	} catch (Exception e) {
-		
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		
 	}
-
-	return count;
-
-}
 
 	
 }

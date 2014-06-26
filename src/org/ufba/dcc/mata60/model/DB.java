@@ -101,7 +101,7 @@ public class DB {
 		    "FOREIGN KEY (`turma_numero` , `turma_disciplina_cod` , `turma_semestre`)"+
 		    "REFERENCES "+DB_NAME+".`turma` (`numero` , `disciplina_cod` , `semestre`)"+
 		    "ON DELETE NO ACTION\n"+
-		    "ON UPDATE NO ACTION,"+
+		    "ON UPDATE CASCADE,"+
 		  "CONSTRAINT `fk_projeto_professor1`"+
 		    "FOREIGN KEY (`professor_cpf`)"+
 		    "REFERENCES "+DB_NAME+".`professor` (`cpf`)"+

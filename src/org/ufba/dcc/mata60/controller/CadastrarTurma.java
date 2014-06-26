@@ -1,8 +1,6 @@
 package org.ufba.dcc.mata60.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.ufba.dcc.mata60.model.Disciplina;
 import org.ufba.dcc.mata60.model.DisciplinaDAO;
@@ -10,12 +8,15 @@ import org.ufba.dcc.mata60.model.Turma;
 import org.ufba.dcc.mata60.model.TurmaDAO;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
+import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Datebox;
+import org.zkoss.zul.Include;
 import org.zkoss.zul.Intbox;
 import org.zkoss.zul.ListModelList;
-import org.zkoss.zul.Listbox;
+import org.zkoss.zul.ListModels;
 import org.zkoss.zul.Timebox;
 
 public class CadastrarTurma extends SelectorComposer<Component>{
@@ -35,44 +36,45 @@ public class CadastrarTurma extends SelectorComposer<Component>{
 	 private Datebox data_inicio;
 	 
 	 @Wire
-	 private Listbox listbox_disciplinaNomes;
+	 private Combobox cbx_disciplina;
 	 
 	 @Wire
 	 private Intbox ano;
 	 
 	 @Wire
 	 private Intbox semestre;
-	 
-	 //<nome, cod> de Disciplina
-	 private Map<String, String> disciplinas = new HashMap<String, String>();
-	    
+	  
 
-	    private void obtemDisciplinas(){
+	    private ArrayList<String> obtemDisciplinas(){
 	    	
 	    	DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+	    	ArrayList<String> disciplinas = new ArrayList<String>();
 	           	
 	    	for(Disciplina dis: disciplinaDAO.getAll())
-	    		disciplinas.put(dis.getNome(), dis.getCod());
+	    		disciplinas.add(dis.getNome()+"-"+dis.getCod());
+	    	
+	    	return disciplinas;
 	        
 	    }
-/*
+	    
+	    
+		private void atualizar(){
+			
+			Include include = (Include)Selectors.iterable(cbx_disciplina.getPage(), "#mainInclude").iterator().next();
+		    include.setSrc(null);
+		    include.setSrc("/template_turma.zul");
+			
+		}
+		
+
 	    @Override
 	    public void doAfterCompose(Component comp) throws Exception{
 	          
 	    	super.doAfterCompose(comp);
-	    	disciplinas.clear();
-	    	obtemDisciplinas();
-	     
-	    	ArrayList<String> listaDisciplinas = new ArrayList<String>();
-	    	
-	    	for(String nomeDisciplina: disciplinas.keySet())
-	    		listaDisciplinas.add(nomeDisciplina);
-	    		
-	    	ListModelList<String> modelDisciplinas = new  ListModelList<String>(listaDisciplinas);
-	     
-	    	listbox_disciplinaNomes.setModel(modelDisciplinas);
+			cbx_disciplina.setModel(ListModels.toListSubModel(new ListModelList<>(obtemDisciplinas())));
+
+	    }
 	    
-	    }*/
 	    
 	    @Listen("onClick = #btn_cadastrar")
 	    public void cadastrarTurma(){
@@ -81,7 +83,7 @@ public class CadastrarTurma extends SelectorComposer<Component>{
 	    	Turma turma = new Turma();
 	    	
 	    	turma.setData_inicio(data_inicio.getValue());
-	    	turma.setDisciplina_cod(disciplinas.get(listbox_disciplinaNomes.getSelectedItem().getValue()));
+	    	turma.setDisciplina_cod(cbx_disciplina.getSelectedItem().getLabel().split("-")[1].trim());
 	    	turma.setHora_fim(hora_fim.getValue());
 	    	turma.setHora_inicio(hora_inicio.getValue());
 	    	turma.setNumero(numero.getValue().toString());
@@ -90,7 +92,7 @@ public class CadastrarTurma extends SelectorComposer<Component>{
 	    	if(turmaDAO.insert(turma) > 0){
 	    		
 	    		Mensagem.sucesso();
-	    		//TODO clear();
+	    		atualizar();
 	    		
 	    	}else
 	    		Mensagem.insucesso();

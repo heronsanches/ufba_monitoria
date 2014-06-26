@@ -1,6 +1,20 @@
-<?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window title="new page title" border="normal">
-New Content Here!
-</window>
+   <window border="normal" hflex="1" vflex="1"
+      contentStyle="overflow:auto"
+      apply="org.ufba.dcc.mata60.controller.ListarTurma">
+      
+   <vlayout hflex="1">
+      <button id="btn_atualiza" image="/imagens/icons/refresh_32x32.png"/>
+      <grid id="grid_principal">
+      <rows>
+      <row>
+         <listbox mold="paging" id="listar_turma" pageSize="10">
+         
+         </listbox>
+      </row>
+      </rows>
+      </grid>
+   </vlayout>
+   </window>
+   
 </zk>

@@ -68,7 +68,7 @@ public class CadastrarDisciplina extends SelectorComposer<Component>{
     	DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
     	
     	Disciplina disciplina = new Disciplina();
-    	disciplina.setCod(codigo_disciplina.getValue());
+    	disciplina.setCod(codigo_disciplina.getValue().toUpperCase());
     	disciplina.setDepartamento_cod((int)Integer.valueOf(cbx_departamento.getSelectedItem().getLabel()
     			.split("-")[1].trim()));
     	disciplina.setNome(nome.getValue());

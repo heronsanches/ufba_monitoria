@@ -9,7 +9,7 @@
 		<listcell id="listcell_professor" label="Professor" />
 	</listitem>
 	
-	  <listitem >
+	<listitem >
       <listcell id="listcell_disciplina" label="Disciplina" />
    </listitem>
    

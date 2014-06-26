@@ -12,17 +12,16 @@ import org.ufba.dcc.mata60.model.TurmaDAO;
 import org.ufba.dcc.mata60.model.TurmaLecionadaProfessorDAO;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
+import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Combobox;
-import org.zkoss.zul.Comboitem;
+import org.zkoss.zul.Include;
 import org.zkoss.zul.Intbox;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.ListModels;
 import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Messagebox;
-import org.zkoss.zul.Popup;
 import org.zkoss.zul.Radiogroup;
 
 public class CadastrarProfessorTurma extends SelectorComposer<Component>{
@@ -71,6 +70,15 @@ public class CadastrarProfessorTurma extends SelectorComposer<Component>{
 		 return disciplinas;
 	    	
 	  }
+	 
+	 
+	 private void atualizar(){
+			
+			Include include = (Include)Selectors.iterable(cbx_disciplina.getPage(), "#mainInclude").iterator().next();
+		    include.setSrc(null);
+		    include.setSrc("/template_turma.zul");
+			
+	}
 	 
 
 	 @Override
@@ -123,7 +131,7 @@ public class CadastrarProfessorTurma extends SelectorComposer<Component>{
 				turma_disciplina_cod, turma_semestre) > 0){
 			
 			Mensagem.sucesso();
-			//TODO clear(); 
+			atualizar(); 
 			
 		}else
 			Mensagem.insucesso();
