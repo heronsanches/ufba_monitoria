@@ -1,7 +1,8 @@
 package org.ufba.dcc.mata60.controller;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.Map;
 
 import org.ufba.dcc.mata60.model.Departamento;
 import org.ufba.dcc.mata60.model.DepartamentoDAO;
@@ -31,17 +32,15 @@ public class CadastrarDisciplina extends SelectorComposer<Component>{
     @Wire
     private Textbox codigo_disciplina;
     
-
-	private ArrayList<String> obtemDepartamentos(){
-		
-		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
-		ArrayList<String> departamentos = new ArrayList<String>();
-				
-		for(Departamento dep: departamentoDAO.getAll())
-			departamentos.add(dep.getNome()+"-"+dep.getCod());
-		
-		return departamentos;
-		
+    private Map<String, Integer> departamentos = new HashMap<String, Integer>();
+    
+	private void obtemDepartamentos(){
+	    	
+	    	DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+	           	
+	    	for(Departamento dep: 	departamentoDAO.getAll())
+	    		departamentos.put(dep.getNome(), dep.getCod());
+	        
 	}
     
 	private void atualizar(){
@@ -58,7 +57,18 @@ public class CadastrarDisciplina extends SelectorComposer<Component>{
           
     	super.doAfterCompose(comp);
     	
-		cbx_departamento.setModel(ListModels.toListSubModel(new ListModelList<>(obtemDepartamentos())));
+    	departamentos.clear();
+    	obtemDepartamentos();
+     
+    	ArrayList<String> listaDepartamentos = new ArrayList<String>();
+    	
+    	for(String depNome: departamentos.keySet())
+    		listaDepartamentos.add(depNome);
+    		
+    	ListModelList<String> modelDepartamentos = new  ListModelList<String>(listaDepartamentos);
+     
+    	cbx_departamento.setModel(modelDepartamentos);
+    	
     
     }
     
@@ -69,8 +79,7 @@ public class CadastrarDisciplina extends SelectorComposer<Component>{
     	
     	Disciplina disciplina = new Disciplina();
     	disciplina.setCod(codigo_disciplina.getValue());
-    	disciplina.setDepartamento_cod((int)Integer.valueOf(cbx_departamento.getSelectedItem().getLabel()
-    			.split("-")[1].trim()));
+    	disciplina.setDepartamento_cod(departamentos.get(cbx_departamento.getSelectedItem().getValue()));
     	disciplina.setNome(nome.getValue());
     	
     	if(disciplinaDAO.insert(disciplina) > 0){

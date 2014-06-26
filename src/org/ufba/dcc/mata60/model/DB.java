@@ -11,7 +11,7 @@ public class DB {
 	//configuration of the database driver
 	private static DB db = null;
 	private static String user = "root";
-	private static String password = "newadmin";
+	private static String password = "";
 	private static String url = "jdbc:mysql://localhost/";
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	

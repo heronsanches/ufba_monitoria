@@ -1,0 +1,18 @@
+<zk>
+      
+<tabbox id="template_professor" vflex="1">
+    <tabs id="tabs">
+    	<tab id="B" image="/imagens/icons/list_32x32.png" />
+        <tab id="A" image="/imagens/icons/add_32x32.png" />
+        <tab id="C" image="/imagens/icons/edit_32x32.png" />
+        <tab id="D" image="/imagens/icons/remove_32x32.png" />
+    </tabs>
+    <tabpanels>
+    	<tabpanel> <include src="listar_professor.zul"/> </tabpanel>
+        <tabpanel > <include src="cadastrar_professor.zul"/> </tabpanel>
+        <tabpanel> <include src="editar_professor.zul"/> </tabpanel>
+        <tabpanel><include src="excluir_professor.zul"/></tabpanel>
+    </tabpanels>
+</tabbox>
+   
+</zk>

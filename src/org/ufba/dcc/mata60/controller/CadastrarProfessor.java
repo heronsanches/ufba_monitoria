@@ -10,8 +10,10 @@ import org.ufba.dcc.mata60.model.Professor;
 import org.ufba.dcc.mata60.model.ProfessorDAO;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
+import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Include;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Messagebox;
@@ -39,6 +41,13 @@ public class CadastrarProfessor extends SelectorComposer<Component>{
     
     private Map<String, Integer> departamentos = new HashMap<String, Integer>();
     
+    private void atualizar() {
+    	Include include = (Include) Selectors
+				.iterable(nome.getPage(), "#mainInclude").iterator()
+				.next();
+		include.setSrc(null);
+		include.setSrc("/template_professor.zul");
+    }
     
 	private void obtemDepartamentos(){
 	    	
@@ -49,7 +58,6 @@ public class CadastrarProfessor extends SelectorComposer<Component>{
 	        
 	}
 
-	/*
     @Override
     public void doAfterCompose(Component comp) throws Exception{
           
@@ -66,7 +74,7 @@ public class CadastrarProfessor extends SelectorComposer<Component>{
      
     	listbox_departamentoNomes.setModel(modelDepartamentos);
     
-    }*/
+    }
     
     @Listen("onClick = #btn_cadastrar")
 	public void cadastrarProfessor(){
@@ -82,8 +90,9 @@ public class CadastrarProfessor extends SelectorComposer<Component>{
 		
 		if(professorDAO.insert(professor) > 0){
 			
+			atualizar();
 			Mensagem.sucesso();
-			//TODO clear();
+			
 			
 		}else
 			Mensagem.insucesso();

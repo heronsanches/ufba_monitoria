@@ -1,0 +1,108 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+
+<zk>
+	<window border="normal" hflex="1" vflex="1"
+		contentStyle="overflow:auto"
+		apply="org.ufba.dcc.mata60.controller.EditarProfessor">
+
+		<vlayout hflex="1" sclass="pos20left">
+			<grid width="700px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">
+							Informe a matricula do professor:
+						</cell>
+						<cell>
+							<combobox autodrop="true"
+								buttonVisible="false" width="430px" id="cbx_professor">
+							</combobox>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+
+			<grid width="700px">
+				<rows>
+					<row>
+						<listbox id="listar_professor">
+
+						</listbox>
+					</row>
+				</rows>
+			</grid>
+
+
+			<grid width="700px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">Novo Nome:</cell>
+						<cell>
+							<textbox id="novoNome" width="200px"
+								maxlength="45" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Nova Matrícula:</cell>
+						<cell>
+							<textbox id="novaMatricula" width="200px"
+								maxlength="20" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">CPF:</cell>
+						<cell>
+							<textbox id="novoCpf" width="200px"
+								maxlength="11" />
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Departamento:</cell>
+						<cell>
+							<listbox id="listbox_departamentoNomes"
+								mold="select">
+								<template name="model">
+									<listitem label="${each}" />
+								</template>
+							</listbox>
+
+						</cell>
+					</row>
+				</rows>
+			</grid>
+			<grid width="700px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<radiogroup id="rd_group_tipoProfessores" />
+					</row>
+					<row>
+						<cell sclass="row-title">Tipo Professor:</cell>
+						<radio id="rd_de" label="DE"
+							radiogroup="rd_group_tipoProfessores" />
+						<radio id="rd_20h" label="20H"
+							radiogroup="rd_group_tipoProfessores" />
+						<radio id="rd_40h" label="40H"
+							radiogroup="rd_group_tipoProfessores" />
+					</row>
+				</rows>
+
+			</grid>
+
+			<hlayout>
+				<button id="btn_atualizar" label="atualizar" />
+			</hlayout>
+		</vlayout>
+	</window>
+
+</zk>
