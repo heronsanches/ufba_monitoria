@@ -5,9 +5,6 @@
 		contentStyle="overflow:auto"
 		apply="org.ufba.dcc.mata60.controller.CadastrarProfessorTurma">
 
-		<caption src="/imagens/icons/plus.png" sclass="fn-caption"
-			label="Cadastrar Professor para Turma" />
-
 		<vlayout hflex="1" sclass="pos20left">
 			<grid width="620px">
 				<columns>

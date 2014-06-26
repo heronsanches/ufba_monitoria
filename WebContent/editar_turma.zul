@@ -1,0 +1,117 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+
+<zk>
+	<window border="normal" hflex="1" vflex="1"
+		contentStyle="overflow:auto"
+		apply="org.ufba.dcc.mata60.controller.EditarTurma">
+
+		<vlayout hflex="1" sclass="pos20left">
+
+			<grid width="700px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">Ano:</cell>
+						<cell>
+							<textbox id="ano_pesquisa" maxlength="4"></textbox>
+						</cell>
+						<cell sclass="row-title">Semestre:</cell>
+                  <cell>
+                     <textbox id="semestre_pesquisa" maxlength="1"> </textbox>
+                  </cell>
+					</row>
+				</rows>
+			</grid>
+			
+			<grid width="700px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">
+							Informe o nome da disciplina:
+						</cell>
+						<cell>
+							<combobox autodrop="true"
+								buttonVisible="false" width="430px" id="cbx_disciplina_pesquisa">
+							</combobox>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+
+			<grid width="700px">
+				<rows>
+				  <row>
+				     <cell sclass="row-title">Selecione a turma para editar:</cell>
+				  </row>
+					<row>
+						<listbox id="listar_turma">
+
+						</listbox>
+					</row>
+				</rows>
+			</grid>
+
+         <!--NOVOS VALORES: numero, hora: inicio e fim, data: inicio, disciplina -->
+			<grid width="700px" id="grid1" visible="false">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+				  <row>
+				     <cell sclass="row-title">Novo número:</cell>
+				     <cell> <intbox id="numeroNovo" width="430px" maxlength="6"/> </cell>
+				  </row>
+				  <row>
+                 <cell sclass="row-title">Nova hora inicio:</cell>
+                 <cell> <timebox id="horaInicioNova" width="430px"/> </cell>
+              </row>
+              <row>
+                 <cell sclass="row-title">Nova hora final:</cell>
+                 <cell> <timebox id="horaFimNova" width="430px"/> </cell>
+              </row>
+              <row>
+                 <cell sclass="row-title">Nova data inicio:</cell>
+                 <cell> <datebox id="dataNova" width="430px"/> </cell>
+              </row>
+               <row>
+                 <cell sclass="row-title">Nova disciplina:</cell>
+                 <cell> <combobox id="disciplinaNova" width="430px"/> </cell>
+              </row>
+				</rows>
+			</grid>
+			
+			<!--NOVOS VALORES: semestre = ano + semestre -->
+			<grid width="700px" id="grid2" visible="false">
+            <columns>
+               <column align="right" hflex="min"/>
+               <column />
+               <column align="right" hflex="min"/>
+               <column />
+            </columns>
+            <rows>
+               <row>
+                 <cell sclass="row-title">Novo ano:</cell>
+                 <cell> <intbox id="anoNovo" maxlength="4" width="200px"/> </cell>
+                 <cell sclass="row-title">Novo semestre:</cell>
+                 <cell> <intbox id="semestreNovo" maxlength="1" width="200px"/> </cell>
+               </row>
+            </rows>
+         </grid>
+
+			<hlayout>
+				<button id="btn_atualizar" label="atualizar" />
+			</hlayout>
+		</vlayout>
+	</window>
+
+</zk>
