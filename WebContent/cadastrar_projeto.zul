@@ -1,6 +1,53 @@
-<?page title="new page title" contentType="text/html;charset=UTF-8"?>
-<zk>
-<window title="new page title" border="normal">
-New Content Here!
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<window border="normal" hflex="1" vflex="1" contentStyle="overflow:auto"
+	apply="org.ufba.dcc.mata60.controller.CadastrarProjeto">
+
+	<vlayout hflex="1" sclass="pos20left">
+		<grid width="500px">
+			<columns>
+				<column align="right" hflex="min" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<cell sclass="row-title">Codigo:</cell>
+					<cell>
+						<textbox id="codigo" width="200px"
+							maxlength="45" />
+					</cell>
+				</row>
+				<row>
+					<cell sclass="row-title">Descrição:</cell>
+					<cell>
+						<textbox id="descricao" width="400px" />
+					</cell>
+				</row>
+				<row>
+					<cell sclass="row-title">Professor:</cell>
+					<cell>
+						<listbox id="listbox_professor" mold="select">
+							<template name="model">
+								<listitem label="${each}" />
+							</template>
+						</listbox>
+
+					</cell>
+				</row>
+				<row>
+					<cell sclass="row-title">Turma:</cell>
+					<cell>
+						<listbox id="listbox_turma" mold="select">
+							<template name="model">
+								<listitem label="${each}" />
+							</template>
+						</listbox>
+
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<hlayout>
+			<button id="btn_cadastrar" label="Cadastrar" />
+		</hlayout>
+	</vlayout>
 </window>
-</zk>
