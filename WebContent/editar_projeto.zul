@@ -6,7 +6,7 @@
 		apply="org.ufba.dcc.mata60.controller.EditarProjeto">
 
 		<vlayout hflex="1" sclass="pos20left">
-			<grid width="700px">
+			<grid width="735px">
 				<columns>
 					<column align="right" hflex="min" />
 					<column />
@@ -18,14 +18,14 @@
 						</cell>
 						<cell>
 							<combobox autodrop="true"
-								buttonVisible="false" width="430px" id="cbx_projeto">
+								buttonVisible="false" width="500px" id="cbx_projeto">
 							</combobox>
 						</cell>
 					</row>
 				</rows>
 			</grid>
 
-			<grid width="700px">
+			<grid width="735px">
 				<rows>
 					<row>
 						<listbox id="listar_projeto">
@@ -36,7 +36,7 @@
 			</grid>
 
 
-			<grid width="700px">
+			<grid width="735px">
 				<columns>
 					<column align="right" hflex="min" />
 					<column />
@@ -45,21 +45,21 @@
 					<row>
 						<cell sclass="row-title">Codigo:</cell>
 						<cell>
-							<textbox id="codigo" width="200px"
-								maxlength="45" />
+							<textbox id="codigo" width="450px"
+								maxlength="10" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Descrição:</cell>
 						<cell>
-							<textbox id="descricao" width="400px" />
+							<textbox id="descricao" width="450px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Professor:</cell>
 						<cell>
 							<listbox id="listbox_professor"
-								mold="select">
+								mold="select" width="450px">
 								<template name="model">
 									<listitem label="${each}" />
 								</template>
@@ -70,8 +70,8 @@
 					<row>
 						<cell sclass="row-title">Turma:</cell>
 						<cell>
-							<listbox id="listbox_turma" mold="select">
-								<template name="model">
+							<listbox id="listbox_turma" mold="select" width="450px">
+								<template name="model" >
 									<listitem label="${each}" />
 								</template>
 							</listbox>
@@ -80,13 +80,15 @@
 					<row>
 						<cell sclass="row-title">Data Inicio:</cell>
 						<cell>
-							<datebox id="data_aprovacao" width="430px" />
+							<datebox id="data_aprovacao" width="450px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Ata Aprovacao:</cell>
 						<cell>
-							<textbox id="ata_aprovacao" width="400px" />
+						   <button label="escolha arquivo da ata" upload="true, maxsize=450"
+						            id="btn_ata" />
+						
 						</cell>
 					</row>
 				</rows>

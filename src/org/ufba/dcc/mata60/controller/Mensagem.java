@@ -12,6 +12,10 @@ public abstract class Mensagem {
 	private static final String UPDATE_INSUCESSO = "Atualização não Realizada!";
 	private static final String DELETE_SUCESSO = "Deleção Realizada com Sucesso!";
 	private static final String DELETE_INSUCESSO = "Deleção não Realizada!";
+	private static final String UPLOAD_ATA_SUCESSO = "Arquivo enviado!";
+	private static final String UPLOAD_ATA_INSUCESSO = "Arquivo deve está no formato pdf,"
+			+ " arquivo não enviado!";
+
 
 	public static void sucesso() {
 
@@ -54,6 +58,22 @@ public abstract class Mensagem {
 
 		Messagebox msg = new Messagebox();
 		msg.show(Mensagem.DELETE_INSUCESSO, "", Messagebox.OK,
+				Messagebox.EXCLAMATION);
+
+	}
+	
+	public static void sucessoUploadAta() {
+
+		Messagebox msg = new Messagebox();
+		msg.show(Mensagem.UPLOAD_ATA_SUCESSO, "", Messagebox.OK,
+				Messagebox.ON_OK);
+
+	}
+	
+	public static void insucessoUploadAta() {
+
+		Messagebox msg = new Messagebox();
+		msg.show(Mensagem.UPLOAD_ATA_INSUCESSO, "", Messagebox.OK,
 				Messagebox.EXCLAMATION);
 
 	}

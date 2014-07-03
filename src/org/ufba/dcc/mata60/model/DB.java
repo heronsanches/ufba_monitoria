@@ -10,7 +10,7 @@ public class DB {
 	
 	//configuration of the database driver
 	private static DB db = null;
-	private static String user = "root";
+	private static String user = "";
 	private static String password = "";
 	private static String url = "jdbc:mysql://localhost/";
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -87,7 +87,7 @@ public class DB {
 	private static final String PROJETO = 
 		"CREATE TABLE IF NOT EXISTS "+DB_NAME+".`projeto` ("+
 		  "`cod` INT NOT NULL,"+
-		  "`ata_aprovacao` TEXT NULL,"+
+		  "`ata_aprovacao` VARCHAR(80) NULL,"+
 		  "`data_approvacao` DATE NULL,"+
 		  "`descricao` TEXT NOT NULL,"+
 		  "`turma_numero` VARCHAR(6) NOT NULL,"+
