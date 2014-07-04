@@ -1,12 +1,13 @@
 package org.ufba.dcc.mata60.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.ufba.dcc.mata60.model.Professor;
-import org.ufba.dcc.mata60.model.ProfessorDAO;
 import org.ufba.dcc.mata60.model.Projeto;
 import org.ufba.dcc.mata60.model.ProjetoDAO;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -18,6 +19,7 @@ import org.zkoss.zul.Listhead;
 import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
+import org.zkoss.zul.Window;
 
 public class ListarProjeto extends SelectorComposer<Component>{
 
@@ -86,6 +88,23 @@ public class ListarProjeto extends SelectorComposer<Component>{
 			}
 		});
 	   
+   }
+   
+   @Listen("onSelect=#listar_projeto")
+   public void mostrarAta(){
+	   
+	   Map<String, String> args = new HashMap<String, String>();
+	   ProjetoDAO projetoDAO = new ProjetoDAO();
+	   
+       args.put("nomePDF", projetoDAO.getOneByCod(Integer.valueOf(listar_projeto.getSelectedItem()
+    		   .getLabel().trim())).getAtaAprovacao());
+	  
+	   //cria uma janela e a usa como um modal e envia parâmetros para o
+       //controller do outro arquivo.zul
+        Window window = (Window)Executions.createComponents(
+                "/modal_ata.zul", null, args);
+        
+        window.doModal();
    }
 
     
