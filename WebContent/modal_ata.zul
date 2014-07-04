@@ -1,5 +1,5 @@
-<window id="pdfwindow" width="90%" height="90%" title="Ata" border="normal" mode="modal" 
+<window id="pdfwindow" width="80%" height="90%" title="Ata do Projeto Aprovado" border="normal" mode="modal" 
       closable="true" maximizable="true" action="show: slideDown;hide: slideUp"
-      apply="org.ufba.dcc.mata60.controller.ModalAta">
-      <iframe id="iframe_pdfwindow" height="100%" width="100%" />
+      apply="org.ufba.dcc.mata60.controller.ModalAta" >
+      <iframe id="iframe_pdfwindow" vflex="1" hflex="1" />
 </window>
