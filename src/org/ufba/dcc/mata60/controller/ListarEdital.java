@@ -1,14 +1,17 @@
 package org.ufba.dcc.mata60.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.ufba.dcc.mata60.model.Edital;
 import org.ufba.dcc.mata60.model.EditalDAO;
 import org.ufba.dcc.mata60.model.Projeto;
 import org.ufba.dcc.mata60.model.ProjetoDAO;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -20,6 +23,7 @@ import org.zkoss.zul.Listhead;
 import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
+import org.zkoss.zul.Window;
 
 public class ListarEdital extends SelectorComposer<Component>{
 
@@ -108,7 +112,29 @@ public class ListarEdital extends SelectorComposer<Component>{
 			
 			}
 		});
+   }
+   
+   @Listen("onSelect=#listar_edital")
+   public void realizarInscricao(){
 	   
+	   Map<String, Edital> args = new HashMap<String, Edital>();
+	   Edital edital = new EditalDAO().getOneByCod(Integer.valueOf(listar_edital.getSelectedItem()
+    		   .getLabel().trim()));
+	   
+	   if( edital.getData_fim().getTime() >=  new Date().getTime() ){
+		   
+		   args.put("edital", edital);
+			  
+		   //cria uma janela e a usa como um modal e envia parâmetros para o
+	       //controller do outro arquivo.zul
+	       Executions.createComponents(
+	                "/modal_inscricao.zul", null, args);
+	        		   
+	   }else{
+		   
+		   Mensagem.inscricaoEncerrada();;
+	   }
+       
    }
 	
 

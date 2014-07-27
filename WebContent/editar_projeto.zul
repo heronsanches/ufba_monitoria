@@ -1,109 +1,109 @@
 <?link rel="stylesheet" type="text/css" href="/style.css"?>
 
 <zk>
-	<window border="normal" hflex="1" vflex="1"
-		contentStyle="overflow:auto"
-		apply="org.ufba.dcc.mata60.controller.EditarProjeto">
+   <window border="normal" hflex="1" vflex="1"
+      contentStyle="overflow:auto"
+      apply="org.ufba.dcc.mata60.controller.EditarProjeto">
 
-		<vlayout hflex="1" sclass="pos20left">
-			<grid width="735px">
-				<columns>
-					<column align="right" hflex="min" />
-					<column />
-				</columns>
-				<rows>
-					<row>
-						<cell sclass="row-title">
-							Informe o codigo do projeto:
-						</cell>
-						<cell>
-							<combobox autodrop="true"
-								buttonVisible="false" width="500px" id="cbx_projeto">
-							</combobox>
-						</cell>
-					</row>
-				</rows>
-			</grid>
+      <vlayout hflex="1" sclass="pos20left">
+         <grid width="735px">
+            <columns>
+               <column align="right" hflex="min" />
+               <column />
+            </columns>
+            <rows>
+               <row>
+                  <cell sclass="row-title">
+                     Informe o codigo do projeto:
+                  </cell>
+                  <cell>
+                     <combobox autodrop="true"
+                        buttonVisible="false" width="500px" id="cbx_projeto">
+                     </combobox>
+                  </cell>
+               </row>
+            </rows>
+         </grid>
 
-			<grid width="735px">
-				<rows>
-					<row>
-						<listbox id="listar_projeto">
+         <grid width="735px">
+            <rows>
+               <row>
+                  <listbox id="listar_projeto">
 
-						</listbox>
-					</row>
-				</rows>
-			</grid>
+                  </listbox>
+               </row>
+            </rows>
+         </grid>
 
 
-			<grid width="735px">
-				<columns>
-					<column align="right" hflex="min" />
-					<column />
-				</columns>
-				<rows>
-					<row>
-						<cell sclass="row-title">Codigo:</cell>
-						<cell>
-							<textbox id="codigo" width="450px"
-								maxlength="10" />
-						</cell>
-					</row>
-					<row>
-						<cell sclass="row-title">Descrição:</cell>
-						<cell>
-							<textbox id="descricao" width="450px" />
-						</cell>
-					</row>
-					<row>
-						<cell sclass="row-title">Professor:</cell>
-						<cell>
-							<listbox id="listbox_professor"
-								mold="select" width="450px">
-								<template name="model">
-									<listitem label="${each}" />
-								</template>
-							</listbox>
+         <grid width="735px">
+            <columns>
+               <column align="right" hflex="min" />
+               <column />
+            </columns>
+            <rows>
+               <row>
+                  <cell sclass="row-title">Codigo:</cell>
+                  <cell>
+                     <textbox id="codigo" width="450px"
+                        maxlength="10" />
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Descrição:</cell>
+                  <cell>
+                     <textbox id="descricao" width="450px" />
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Professor:</cell>
+                  <cell>
+                     <listbox id="listbox_professor"
+                        mold="select" width="450px">
+                        <template name="model">
+                           <listitem label="${each}" />
+                        </template>
+                     </listbox>
 
-						</cell>
-					</row>
-					<row>
-						<cell sclass="row-title">Turma:</cell>
-						<cell>
-							<listbox id="listbox_turma" mold="select"
-								width="450px">
-								<template name="model">
-									<listitem label="${each}" />
-								</template>
-							</listbox>
-						</cell>
-					</row>
-					<row>
-						<cell sclass="row-title">Data Inicio:</cell>
-						<cell>
-							<datebox id="data_aprovacao" width="450px" />
-						</cell>
-					</row>
-					<row>
-						<cell sclass="row-title">Atividades Gerais:</cell>
-						<cell>
-							<textbox id="atividades_gerais" width="450px" height="120px"/>
-						</cell>
-					</row>
-					<row>
-						<cell sclass="row-title">Ata Aprovacao:</cell>
-						<cell>
-							<button label="escolha arquivo da ata"
-								upload="true, maxsize=450" id="btn_ata" />
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Turma:</cell>
+                  <cell>
+                     <listbox id="listbox_turma" mold="select"
+                        width="450px">
+                        <template name="model">
+                           <listitem label="${each}" />
+                        </template>
+                     </listbox>
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Data Inicio:</cell>
+                  <cell>
+                     <datebox id="data_aprovacao" width="450px" />
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Atividades Gerais:</cell>
+                  <cell>
+                     <textbox id="atividades_gerais" width="450px" height="120px"/>
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">Ata Aprovacao:</cell>
+                  <cell>
+                     <button label="escolha arquivo da ata"
+                        upload="true, maxsize=450" id="btn_ata" />
 
-						</cell>
-					</row>
-				</rows>
-			</grid>
-			<hlayout>
-				<button id="btn_atualizar" label="atualizar" />
-			</hlayout>
-		</vlayout>
-	</window>
+                  </cell>
+               </row>
+            </rows>
+         </grid>
+         <hlayout>
+            <button id="btn_atualizar" label="atualizar" />
+         </hlayout>
+      </vlayout>
+   </window>
 
 </zk>

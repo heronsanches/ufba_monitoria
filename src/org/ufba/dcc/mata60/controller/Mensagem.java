@@ -19,6 +19,16 @@ public abstract class Mensagem {
 			+ "Selecione a aba editar para selecionar e salvar um arquivo de ata.";
 	private static final String ARQUIVO_NAO_EXISTE = "Arquivo de ata não existe mais no local atualmente"
 			+ " especificado.\n";
+	private static final String INSCRICAO_ENCERRADA = "Edital fechado.\n"
+			+ "Período de inscrição encerrado.";
+	
+	
+	public static void inscricaoEncerrada() {
+
+		Messagebox msg = new Messagebox();
+		msg.show(Mensagem.INSCRICAO_ENCERRADA, "", Messagebox.OK, Messagebox.EXCLAMATION);
+
+	}
 	
 	public static void arquivoCaminhoVazio() {
 

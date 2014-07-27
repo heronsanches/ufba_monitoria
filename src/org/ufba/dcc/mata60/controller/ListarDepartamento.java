@@ -46,38 +46,40 @@ public class ListarDepartamento extends SelectorComposer<Component>{
 	   DepartamentoDAO departamentoDAO = new DepartamentoDAO();
        ArrayList<Departamento> departamentos = departamentoDAO.getAll();
        
-       //remove filhos da listbox
-       listar_departamento.getItems().clear();
-       
-       ListModelList<Departamento> departamentoModel = new ListModelList<Departamento>(departamentos);
-       //cria model
-       listar_departamento.setModel(departamentoModel);
-       
-       //recria listbox
-       try {
-		
-    	   Listhead lh = new Listhead();
-           lh.appendChild(new Listheader("cod"));
-           lh.appendChild(new Listheader("nome"));
-           listar_departamento.appendChild(lh);
+       if(!departamentos.isEmpty()){
+    	 //remove filhos da listbox
+           listar_departamento.getItems().clear();
            
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	       
-       listar_departamento.setItemRenderer(new ListitemRenderer() {
+           ListModelList<Departamento> departamentoModel = new ListModelList<Departamento>(departamentos);
+           //cria model
+           listar_departamento.setModel(departamentoModel);
+           
+           //recria listbox
+           try {
+    		
+        	   Listhead lh = new Listhead();
+               lh.appendChild(new Listheader("cod"));
+               lh.appendChild(new Listheader("nome"));
+               listar_departamento.appendChild(lh);
+               
+    		} catch (Exception e) {
+    			// TODO: handle exception
+    		}
+    	       
+           listar_departamento.setItemRenderer(new ListitemRenderer() {
 
-			@Override
-			public void render(Listitem listitem, Object data, int arg2)
-					throws Exception {
-				
-				final Departamento dep = (Departamento)data;
-				
-				new Listcell(String.valueOf(dep.getCod())).setParent(listitem);
-				new Listcell(dep.getNome()).setParent(listitem);
-				
-			}
-		});
+    			@Override
+    			public void render(Listitem listitem, Object data, int arg2)
+    					throws Exception {
+    				
+    				final Departamento dep = (Departamento)data;
+    				
+    				new Listcell(String.valueOf(dep.getCod())).setParent(listitem);
+    				new Listcell(dep.getNome()).setParent(listitem);
+    				
+    			}
+    		});
+       }
 	   
    }
 

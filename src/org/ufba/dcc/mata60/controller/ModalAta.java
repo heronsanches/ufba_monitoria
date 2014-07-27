@@ -3,8 +3,6 @@ package org.ufba.dcc.mata60.controller;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.zkoss.util.media.AMedia;
 import org.zkoss.zk.ui.Component;

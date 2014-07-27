@@ -1,0 +1,156 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<zk>
+	<window id="modalInscricao" width="40%" height="100%"
+		border="normal" mode="modal" closable="true" maximizable="true"
+		contentStyle="overflow:auto" action="show: slideDown;hide: slideUp"
+		apply="org.ufba.dcc.mata60.controller.ModalInscricao">
+
+		<grid hflex="1"><!-- hflex="1" - available width inside parent (window) -->
+			<auxhead>
+				<auxheader colspan="2"
+					label="Inscrição Processo Seletivo" style="font-size:16px" />
+			</auxhead>
+			<columns visible="false">
+				<column></column>
+			</columns>
+			<rows>
+				<row>
+					<grid width="100%" id="grid_edital">
+						<auxhead>
+							<auxheader colspan="2"
+								label="Detalhes Edital" />
+						</auxhead>
+						<columns visible="false">
+							<column />
+						</columns>
+						<rows>
+							<row>
+								<cell sclass="row-title">
+									Código edital:
+									<intbox id="cod_edital"
+										readonly="true" focus="false" width="100%" />
+								</cell>
+							</row>
+							<row>
+								<cell sclass="row-title">
+									Data Inicio:
+									<textbox id="data_inicio"
+										width="100%" readonly="true" focus="false" />
+								</cell>
+							</row>
+							<row>
+								<cell sclass="row-title">
+									Data Fim:
+									<textbox id="data_fim" width="100%"
+										readonly="true" focus="false" />
+								</cell>
+
+							</row>
+							<row>
+								<cell sclass="row-title">
+									Número de Vagas:
+									<intbox id="n_vagas" maxlength="2"
+										width="100%" readonly="true" focus="false" />
+								</cell>
+
+							</row>
+							<row>
+								<cell sclass="row-title">
+									Documentos Necessários:
+									<textbox id="documentos_necessarios"
+										multiline="true" width="100%" height="120px" readonly="true"
+										focus="false" />
+								</cell>
+
+							</row>
+							<row>
+								<cell sclass="row-title">
+									Informações Adicionais:
+									<textbox id="informacoes_adicionais"
+										multiline="true" maxlength="80" width="100%" height="120px"
+										readonly="true" focus="false" />
+								</cell>
+							</row>
+						</rows>
+					</grid>
+				</row>
+				
+				<row>
+					<grid width="100%" id="projeto">
+						<auxhead>
+                     <auxheader colspan="2"
+                        label="Detalhes Projeto" />
+                  </auxhead>
+                  <columns visible="false">
+                     <column />
+                  </columns>
+						<rows>
+							<row>
+								<cell sclass="row-title">
+									Codigo Projeto:
+									<intbox id="cod_projeto"
+                              readonly="true" focus="false" />
+								</cell>
+							</row>
+							<row>
+								<cell sclass="row-title">
+									Descrição:
+									<textbox id="descricao_projeto"
+                              width="100%" readonly="true" focus="false" />
+								</cell>
+							</row>
+							<row>
+								<cell sclass="row-title">
+									Professor:
+									<textbox id="professor_projeto"
+                              width="100%" readonly="true" focus="false" />
+								</cell>
+							</row>
+							<row>
+								<cell sclass="row-title">Turma:
+								<textbox id="turma_projeto"
+                              width="100%" readonly="true" focus="false" />
+								</cell>
+							</row>
+							<row>
+								<cell sclass="row-title">
+									Atividades Gerais:
+									<textbox
+                              id="atividades_gerais_projeto" width="100%" height="120px"
+                              readonly="true" focus="false" />
+								</cell>
+							</row>
+						</rows>
+					</grid>
+				</row>
+				<row>
+				<grid width="100%" id="aluno">
+                  <auxhead>
+                     <auxheader colspan="2"
+                        label="Inscrição Aluno" />
+                  </auxhead>
+                  <columns visible="false">
+                     <column />
+                  </columns>
+                  <rows>
+                     <row>
+                        <cell sclass="row-title">
+                           Informe CPF:
+                           <textbox id="cpf_aluno"
+                              width="450px" maxlength="11" />
+                        </cell>
+                     </row>
+                     <row align="center">
+                     	<hlayout>
+                     		<button id="btn_inscricao"	label="Realizar Inscrição" />
+                     		<button id="btn_cancelar"  label="Desistir Inscrição" />
+                     	</hlayout>
+                     </row>
+                  </rows>
+               </grid>
+
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

@@ -133,6 +133,48 @@ public class ProfessorDAO {
 		}
 
 	}
+	
+	public Professor getOneByCPF(String cpf) {
+
+		try {
+
+			Statement statement = DB.getConnectionDB().createStatement();
+
+			ResultSet resultSet = statement.executeQuery("select * from "
+					+ DB.getDbName() + ".professor " + "where cpf='"
+					+ cpf + "'");
+
+			Professor professor = null;
+			if (resultSet.next()) {
+
+				professor = new Professor();
+				professor.setCpf(resultSet.getString("cpf"));
+				professor.setDepartamento_cod(resultSet
+						.getInt("departamento_cod"));
+				professor.setMatricula(resultSet.getString("matricula"));
+				professor.setNome(resultSet.getString("nome"));
+				professor.setTipo(resultSet.getString("tipo"));
+
+			}
+
+			statement.close();
+			return professor;
+
+		} catch (SQLException e) {
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+
+		} catch (Exception e) {
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+
+		}
+
+	}
 
 	public int updateOne(Professor professor) {
 
