@@ -61,6 +61,9 @@ public class EditarProjeto extends SelectorComposer<Component> {
 	private Textbox ata_aprovacao;
 	
 	@Wire
+	private Textbox atividades_gerais;
+	
+	@Wire
 	 private Datebox data_aprovacao;
 
 	@Wire
@@ -214,7 +217,10 @@ public class EditarProjeto extends SelectorComposer<Component> {
 	private void updateValues(Projeto projeto) {
 		codigo.setValue(Integer.toString(projeto.getCod()));
 		descricao.setValue(projeto.getDescricao());
-		listbox_turma.setSelectedIndex(modelTurma.indexOf(projeto.getTurmaDisciplinaCod() + "-" + projeto.getTurmaNumero()));
+		listbox_turma.setSelectedIndex(modelTurma.indexOf(projeto.getTurmaDisciplinaCod() + "-" 
+				+ projeto.getTurmaNumero()));
+		atividades_gerais.setValue(projeto.getAtividades_gerais());
+	
 	}
 	
 	
@@ -267,6 +273,7 @@ public class EditarProjeto extends SelectorComposer<Component> {
 		projeto.setTurmaValues(turmas.get(listbox_turma.getSelectedItem().getValue().toString()
 				.split("-")[1].trim()));
 		projeto.setDataAprovacao(data_aprovacao.getValue());
+		projeto.setAtividades_gerais(atividades_gerais.getValue());
 		
 		if(media.getContentType().equals(tipoArquivoAta)){
         	

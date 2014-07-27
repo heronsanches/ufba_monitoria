@@ -3,6 +3,8 @@ package org.ufba.dcc.mata60.controller;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.zkoss.util.media.AMedia;
 import org.zkoss.zk.ui.Component;
@@ -36,15 +38,24 @@ public class ModalAta extends SelectorComposer<Component>{
 		
 		//ler arquivo do disco e o coloca num frame dentro do modal
 		File f = new File(caminhoAta+nomePDF);
-		byte[] buffer = new byte[ (int) f.length() ]; 
-		FileInputStream fs = new FileInputStream(f);
-		fs.read( buffer ); 
-		fs.close();
-    	
-		ByteArrayInputStream is = new ByteArrayInputStream(buffer);
-   		AMedia amedia =new AMedia(nomePDF, "pdf", tipoArquivoAta, is);
-   		iframe_pdfwindow.setContent(amedia);
-   		
+		
+		if(f.exists() && !f.isDirectory()){
+			
+			byte[] buffer = new byte[ (int) f.length() ]; 
+			FileInputStream fs = new FileInputStream(f);
+			fs.read( buffer ); 
+			fs.close();
+	    	
+			ByteArrayInputStream is = new ByteArrayInputStream(buffer);
+	   		AMedia amedia =new AMedia(nomePDF, "pdf", tipoArquivoAta, is);
+	   		iframe_pdfwindow.setContent(amedia);
+	   		
+		}else{
+
+			Mensagem.arquivoNaoExiste();
+			
+		}
+		
 	}
 	
 

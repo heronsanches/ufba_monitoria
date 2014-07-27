@@ -1,0 +1,96 @@
+<?link rel="stylesheet" type="text/css" href="/style.css"?>
+<zk>
+	<window border="normal" hflex="1" vflex="1"
+		contentStyle="overflow:auto"
+		apply="org.ufba.dcc.mata60.controller.ExcluirEdital">
+
+		<vlayout hflex="1" sclass="pos20left">
+
+			<grid width="700px">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">
+							Informe o código do edital:
+						</cell>
+						<cell>
+							<combobox id="cbx_edital" width="430px"
+								autodrop="true" />
+						</cell>
+					</row>
+				</rows>
+			</grid>
+
+			<grid width="700px" id="grid_excluir" visible="false">
+				<columns>
+					<column align="right" hflex="min" />
+					<column />
+				</columns>
+				<rows>
+					<row>
+						<cell sclass="row-title">
+							Código edital:
+						</cell>
+						<cell>
+							<intbox id="cod_edital" readonly="true" focus="false"/>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">
+							Código do projeto:
+						</cell>
+						<cell>
+							<intbox id="cod_projeto" readonly="true" focus="false"/>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Data Inicio:</cell>
+						<cell>
+							<textbox id="data_inicio" width="430px" readonly="true" focus="false"/>
+						</cell>
+					</row>
+					<row>
+						<cell sclass="row-title">Data Fim:</cell>
+						<cell>
+							<textbox id="data_fim" width="430px" readonly="true" focus="false" />
+						</cell>
+					</row>
+					<row>
+                  <cell sclass="row-title">Número de Vagas:</cell>
+                  <cell>
+                     <intbox id="n_vagas" maxlength="2"
+                        width="430px" readonly="true" focus="false"/>
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">
+                     Documentos Necessários:
+                  </cell>
+                  <cell>
+                     <textbox id="documentos_necessarios"
+                        multiline="true" maxlength="80" width="430px" height="120px" readonly="true"
+                        focus="false"/>
+                  </cell>
+               </row>
+               <row>
+                  <cell sclass="row-title">
+                     Informações Adicionais:
+                  </cell>
+                  <cell>
+                     <textbox id="informacoes_adicionais"
+                        multiline="true" maxlength="80" width="430px" height="120px" readonly="true"
+                        focus="false"/>
+                  </cell>
+               </row>
+				</rows>
+			</grid>
+
+			<hlayout>
+				<button id="btn_excluir" label="Excluir" />
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

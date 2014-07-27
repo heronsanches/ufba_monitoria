@@ -3,8 +3,7 @@
       contentStyle="overflow:auto"
       apply="org.ufba.dcc.mata60.controller.ListarProfessor">
       
-      <caption sclass="fn-caption"  label="Professores" />
-   <vlayout hflex="1">
+      <vlayout hflex="1">
       <button id="btn_atualiza" image="/imagens/icons/refresh_32x32.png"/>
       <grid id="grid_principal">
       <rows>

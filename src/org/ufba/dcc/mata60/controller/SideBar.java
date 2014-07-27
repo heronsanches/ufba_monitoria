@@ -40,10 +40,10 @@ public class SideBar extends SelectorComposer<Component>{
 	    	case "listcell_turma":  locationUri = "/template_turma.zul";
 				break;
     			
-	    	case "listcell_projeto":  locationUri = "/template_projeto.zul"; //TODO
+	    	case "listcell_projeto":  locationUri = "/template_projeto.zul";
 				break;
 				
-	    	case "listcell_edital":  locationUri = "/template_edital.zul"; //TODO
+	    	case "listcell_edital":  locationUri = "/template_edital.zul";
 				break;
 				
 	    	case "listcell_sair":  locationUri = ""; //TODO

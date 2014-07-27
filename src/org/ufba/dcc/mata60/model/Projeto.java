@@ -12,6 +12,16 @@ public class Projeto {
 	private String professorCpf;
 	private String turmaDisciplinaCod;
 	private String turmaSemestre;
+	private String atividades_gerais;
+	
+
+	public String getAtividades_gerais() {
+		return atividades_gerais;
+	}
+
+	public void setAtividades_gerais(String atividades_gerais) {
+		this.atividades_gerais = atividades_gerais;
+	}
 
 	public String getTurmaDisciplinaCod() {
 		return turmaDisciplinaCod;
@@ -76,12 +86,12 @@ public class Projeto {
 	public void setProfessorCpf(String cpf) {
 		this.professorCpf = cpf;
 	}
-
+	
 	public void setTurmaValues(Turma t) {
 		this.turmaDisciplinaCod = t.getDisciplina_cod();
 		this.turmaNumero = t.getNumero();
 		this.turmaSemestre = t.getSemestre();
 	}
-	
+
 }
 

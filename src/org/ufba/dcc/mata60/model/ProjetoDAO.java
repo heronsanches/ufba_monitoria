@@ -17,14 +17,17 @@ public class ProjetoDAO {
 			PreparedStatement preparedStatement = DB.getConnectionDB()
 					.prepareStatement(
 							"insert into " + DB.getDbName()
-									+ ".projeto(cod, descricao, turma_numero, professor_cpf, turma_disciplina_cod, turma_semestre) values (?, ?, ?, ?, ?, ?)");
-
+									+ ".projeto(cod, descricao, turma_numero, professor_cpf,"
+									+ " turma_disciplina_cod, turma_semestre, atividades_gerais)"
+									+ " values (?, ?, ?, ?, ?, ?, ?)");
+ 
 			preparedStatement.setInt(1, projeto.getCod());
 			preparedStatement.setString(2, projeto.getDescricao());
 			preparedStatement.setString(3, projeto.getTurmaNumero());
 			preparedStatement.setString(4, projeto.getProfessorCpf());
 			preparedStatement.setString(5, projeto.getTurmaDisciplinaCod());
 			preparedStatement.setString(6, projeto.getTurmaSemestre());
+			preparedStatement.setString(7, projeto.getAtividades_gerais());
 
 			count = preparedStatement.executeUpdate(); // update
 			preparedStatement.close();
@@ -62,6 +65,7 @@ public class ProjetoDAO {
 				projeto.setTurmaNumero(resultSet.getString("turma_numero"));
 				projeto.setTurmaDisciplinaCod(resultSet.getString("turma_disciplina_cod"));
 				projeto.setTurmaSemestre(resultSet.getString("turma_semestre"));
+				projeto.setAtividades_gerais(resultSet.getString("atividades_gerais"));
 				
 				projetos.add(projeto);
 
@@ -105,6 +109,8 @@ public class ProjetoDAO {
 				projeto.setTurmaNumero(resultSet.getString("turma_numero"));
 				projeto.setTurmaDisciplinaCod(resultSet.getString("turma_disciplina_cod"));
 				projeto.setTurmaSemestre(resultSet.getString("turma_semestre"));
+				projeto.setAtividades_gerais(resultSet.getString("atividades_gerais"));
+
 				
 			}
 
@@ -135,7 +141,9 @@ public class ProjetoDAO {
 							"update "
 									+ DB.getDbName()
 									+ ".projeto"
-									+ " set cod=?, descricao=?, professor_cpf=?, data_approvacao=?, ata_aprovacao=?, turma_numero=?, turma_disciplina_cod=?, turma_semestre=? where cod=?");
+									+ " set cod=?, descricao=?, professor_cpf=?, data_approvacao=?,"
+									+ " ata_aprovacao=?, turma_numero=?, turma_disciplina_cod=?,"
+									+ " turma_semestre=?,  atividades_gerais=? where cod=?");
 
 			preparedStatement.setInt(1, projeto.getCod());
 			preparedStatement.setString(2, projeto.getDescricao());
@@ -156,7 +164,8 @@ public class ProjetoDAO {
 			preparedStatement.setString(6, projeto.getTurmaNumero());
 			preparedStatement.setString(7, projeto.getTurmaDisciplinaCod());
 			preparedStatement.setString(8, projeto.getTurmaSemestre());
-			preparedStatement.setInt(9, projeto.getCod());
+			preparedStatement.setString(9, projeto.getAtividades_gerais());
+			preparedStatement.setInt(10, projeto.getCod());
 			
 			count = preparedStatement.executeUpdate();
 

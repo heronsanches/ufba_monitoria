@@ -15,6 +15,24 @@ public abstract class Mensagem {
 	private static final String UPLOAD_ATA_SUCESSO = "Arquivo enviado!";
 	private static final String UPLOAD_ATA_INSUCESSO = "Arquivo deve está no formato pdf,"
 			+ " arquivo não enviado!";
+	private static final String ARQUIVO_CAMINHO_VAZIO = "Não existe arquivo de ata para exibir.\n"
+			+ "Selecione a aba editar para selecionar e salvar um arquivo de ata.";
+	private static final String ARQUIVO_NAO_EXISTE = "Arquivo de ata não existe mais no local atualmente"
+			+ " especificado.\n";
+	
+	public static void arquivoCaminhoVazio() {
+
+		Messagebox msg = new Messagebox();
+		msg.show(Mensagem.ARQUIVO_CAMINHO_VAZIO, "", Messagebox.OK, Messagebox.EXCLAMATION);
+
+	}
+	
+	public static void arquivoNaoExiste() {
+
+		Messagebox msg = new Messagebox();
+		msg.show(Mensagem.ARQUIVO_NAO_EXISTE, "", Messagebox.OK, Messagebox.EXCLAMATION);
+
+	}
 
 
 	public static void sucesso() {

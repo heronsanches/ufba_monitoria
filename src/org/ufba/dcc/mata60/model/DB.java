@@ -10,8 +10,8 @@ public class DB {
 	
 	//configuration of the database driver
 	private static DB db = null;
-	private static String user = "";
-	private static String password = "";
+	private static String user = "root";
+	private static String password = "newadmin";
 	private static String url = "jdbc:mysql://localhost/";
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	
@@ -89,11 +89,12 @@ public class DB {
 		  "`cod` INT NOT NULL,"+
 		  "`ata_aprovacao` VARCHAR(80) NULL,"+
 		  "`data_approvacao` DATE NULL,"+
-		  "`descricao` TEXT NOT NULL,"+
+		  "`descricao` VARCHAR(140) NOT NULL,"+
 		  "`turma_numero` VARCHAR(6) NOT NULL,"+
 		  "`professor_cpf` VARCHAR(11) NOT NULL,"+
 		  "`turma_disciplina_cod` VARCHAR(10) NOT NULL,"+
 		  "`turma_semestre` VARCHAR(6) NOT NULL,"+
+		  "`atividades_gerais` TEXT NOT NULL,"+
 		  "PRIMARY KEY (`cod`),"+
 		  "INDEX `fk_projeto_turma1_idx` (`turma_numero` ASC, `turma_disciplina_cod` ASC, `turma_semestre` ASC),"+
 		  "INDEX `fk_projeto_professor1_idx` (`professor_cpf` ASC),"+
@@ -109,6 +110,7 @@ public class DB {
 		    "ON UPDATE NO ACTION)"+
 		"ENGINE = InnoDB;";
 
+	//TODO adicionar campo ultima_atualizacao
 	private static final String EDITAL = 
 		"CREATE TABLE IF NOT EXISTS "+DB_NAME+".`edital` ("+
 		  "`cod` INT NOT NULL AUTO_INCREMENT,"+
@@ -119,6 +121,8 @@ public class DB {
 		  "`documentos_necessarios` TEXT NOT NULL,"+
 		  "`projeto_cod` INT NOT NULL,"+
 		  "PRIMARY KEY (`cod`),"+
+		  "INDEX (`projeto_cod` ASC),"+
+		  "UNIQUE INDEX (`projeto_cod` ASC),"+
 		  "INDEX `fk_edital_projeto1_idx` (`projeto_cod` ASC),"+
 		  "CONSTRAINT `fk_edital_projeto1`"+
 		    "FOREIGN KEY (`projeto_cod`)"+
@@ -148,7 +152,13 @@ public class DB {
 		  "`cod` INT NOT NULL AUTO_INCREMENT,"+
 		  "`texto` TEXT NULL,"+
 		  "`data_criacao` DATE NOT NULL,"+
-		  "PRIMARY KEY (`cod`))"+
+		  "`projeto_cod` INT NOT NULL,"+
+		  "PRIMARY KEY (`cod`),"+
+		  "INDEX `fk_relatorio_projeto1_idx` (`projeto_cod` ASC),"+
+		  "UNIQUE INDEX `projeto_cod_UNIQUE` (`projeto_cod` ASC),"+
+		  "CONSTRAINT `fk_relatorio_projeto1`"+
+		    "FOREIGN KEY (`projeto_cod`)"+
+		    "REFERENCES "+DB_NAME+".`projeto` (`cod`))"+
 		"ENGINE = InnoDB;";
 	
 	private static final String RELATORIO_MONITOR = 
@@ -176,7 +186,7 @@ public class DB {
 		    "ON UPDATE NO ACTION)"+
 		"ENGINE = InnoDB;";
 
-	private static final String ATIVIDADE = 
+	/*private static final String ATIVIDADE = 
 		"CREATE TABLE IF NOT EXISTS "+DB_NAME+".`atividade` ("+
 		  "`cod` INT NOT NULL AUTO_INCREMENT,"+
 		  "`descricao` TEXT NOT NULL,"+
@@ -204,7 +214,7 @@ public class DB {
 		    "REFERENCES "+DB_NAME+".`r_professor` (`relatorio_cod`)"+
 		    "ON DELETE NO ACTION\n"+
 		    "ON UPDATE NO ACTION)"+
-		"ENGINE = InnoDB;";
+		"ENGINE = InnoDB;";*/
 	
 	private static final String TURMA_LECIONADA_PROFESSOR = 
 		"CREATE TABLE IF NOT EXISTS "+DB_NAME+".`turma_lecionada_professor` ("+
@@ -368,7 +378,7 @@ public class DB {
 			statement.addBatch(RELATORIO);
 			statement.addBatch(RELATORIO_MONITOR);
 			statement.addBatch(RELATORIO_PROFESSOR);
-			statement.addBatch(ATIVIDADE);
+			//statement.addBatch(ATIVIDADE);
 			statement.addBatch(TURMA_LECIONADA_PROFESSOR);
 			statement.addBatch(MONITOR);
 			statement.addBatch(PROJETO_POSSUI_MONITOR);

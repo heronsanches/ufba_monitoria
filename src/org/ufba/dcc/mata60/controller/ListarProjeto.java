@@ -95,17 +95,26 @@ public class ListarProjeto extends SelectorComposer<Component>{
 	   
 	   Map<String, String> args = new HashMap<String, String>();
 	   ProjetoDAO projetoDAO = new ProjetoDAO();
+	   Projeto projeto = projetoDAO.getOneByCod(Integer.valueOf(listar_projeto.getSelectedItem()
+    		   .getLabel().trim()));
 	   
-       args.put("nomePDF", projetoDAO.getOneByCod(Integer.valueOf(listar_projeto.getSelectedItem()
-    		   .getLabel().trim())).getAtaAprovacao());
-	  
-	   //cria uma janela e a usa como um modal e envia parâmetros para o
-       //controller do outro arquivo.zul
-        Window window = (Window)Executions.createComponents(
-                "/modal_ata.zul", null, args);
-        
-        window.doModal();
+	   if( (projeto.getAtaAprovacao() != null) && (!projeto.getAtaAprovacao().trim().equals("")) ){
+		   
+		   args.put("nomePDF", projeto.getAtaAprovacao());
+			  
+		   //cria uma janela e a usa como um modal e envia parâmetros para o
+	       //controller do outro arquivo.zul
+	        Window window = (Window)Executions.createComponents(
+	                "/modal_ata.zul", null, args);
+	        
+	        //TODO tratar abertura do modal vazia, quando não existe mais o arquivo
+	        window.doModal();
+		   
+	   }else{
+		   
+		   Mensagem.arquivoCaminhoVazio();
+	   }
+       
    }
-
     
 }

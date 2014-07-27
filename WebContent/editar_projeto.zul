@@ -70,8 +70,9 @@
 					<row>
 						<cell sclass="row-title">Turma:</cell>
 						<cell>
-							<listbox id="listbox_turma" mold="select" width="450px">
-								<template name="model" >
+							<listbox id="listbox_turma" mold="select"
+								width="450px">
+								<template name="model">
 									<listitem label="${each}" />
 								</template>
 							</listbox>
@@ -84,11 +85,17 @@
 						</cell>
 					</row>
 					<row>
+						<cell sclass="row-title">Atividades Gerais:</cell>
+						<cell>
+							<textbox id="atividades_gerais" width="450px" height="120px"/>
+						</cell>
+					</row>
+					<row>
 						<cell sclass="row-title">Ata Aprovacao:</cell>
 						<cell>
-						   <button label="escolha arquivo da ata" upload="true, maxsize=450"
-						            id="btn_ata" />
-						
+							<button label="escolha arquivo da ata"
+								upload="true, maxsize=450" id="btn_ata" />
+
 						</cell>
 					</row>
 				</rows>

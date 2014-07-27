@@ -1,11 +1,7 @@
 package org.ufba.dcc.mata60.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.ufba.dcc.mata60.model.Departamento;
-import org.ufba.dcc.mata60.model.DepartamentoDAO;
 import org.ufba.dcc.mata60.model.Professor;
 import org.ufba.dcc.mata60.model.ProfessorDAO;
 import org.ufba.dcc.mata60.model.Projeto;
@@ -17,11 +13,11 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Include;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.ListModels;
 import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Messagebox;
-import org.zkoss.zul.Radiogroup;
 import org.zkoss.zul.Textbox;
 
 public class CadastrarProjeto extends SelectorComposer<Component> {
@@ -29,19 +25,19 @@ public class CadastrarProjeto extends SelectorComposer<Component> {
 	private static final long serialVersionUID = 1L;
 
 	@Wire
-	Textbox codigo;
+	private Textbox codigo;
 	
 	@Wire
-	Textbox descricao;
+	private Textbox descricao;
 
 	@Wire
-	private Listbox listbox_professor;
+	private Combobox cbx_professor;
 	
 	@Wire
-	private Listbox listbox_turma;
-
-	private Map<String, String> professores = new HashMap<String, String>();
-	private Map<String, Turma> turmas = new HashMap<String, Turma>();
+	private Combobox cbx_turma;
+	
+	@Wire
+	private Textbox atividades_gerais;
 	
 	private void atualizar() {
 		Include include = (Include) Selectors
@@ -50,48 +46,34 @@ public class CadastrarProjeto extends SelectorComposer<Component> {
 		include.setSrc("/template_projeto.zul");
 	}
 
-	private void obtemProfessores() {
+	private ArrayList<String> obtemProfessores() {
 
-		ProfessorDAO professorDAO = new ProfessorDAO();
-
-		for (Professor prof : professorDAO.getAll())
-			professores.put(prof.getNome(), prof.getCpf());
+		ArrayList<String> professores = new ArrayList<String>();
+		
+		for (Professor prof : new ProfessorDAO().getAll())
+			professores.add(prof.getNome()+"-"+prof.getCpf());
+		
+		return professores;
 
 	}
 
-	private void obtemTurmas() {
+	private ArrayList<String> obtemTurmas() {
 
-		TurmaDAO turmaDAO = new TurmaDAO();
-
-		ArrayList<String> listaTurma = new ArrayList<String>();
+		ArrayList<String> turmas = new ArrayList<String>();
 		
-		for (Turma turma : turmaDAO.getAll()) {
-			turmas.put(turma.getNumero(), turma);
-			listaTurma.add(turma.getDisciplina_cod() + "-" + turma.getNumero());
-		}
+		for (Turma turma : new TurmaDAO().getAll())
+			turmas.add(turma.getDisciplina_cod()+"-"+turma.getSemestre()+"-"+turma.getNumero());
 		
-		ListModelList<String> modelTurma = new ListModelList<String>(listaTurma);
+		return turmas;
 
-		listbox_turma.setModel(modelTurma);
 	}
 	
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 
 		super.doAfterCompose(comp);
-		professores.clear();
-		obtemProfessores();
-		obtemTurmas();
-
-		ArrayList<String> listaProfessores = new ArrayList<String>();
-
-		for (String profName : professores.keySet())
-			listaProfessores.add(profName);
-
-		ListModelList<String> modelProfessores = new ListModelList<String>(
-				listaProfessores);
-
-		listbox_professor.setModel(modelProfessores);
+		cbx_professor.setModel(ListModels.toListSubModel(new ListModelList<>(obtemProfessores())));
+		cbx_turma.setModel(ListModels.toListSubModel(new ListModelList<>(obtemTurmas())));
 
 	}
 
@@ -103,12 +85,14 @@ public class CadastrarProjeto extends SelectorComposer<Component> {
 
 		projeto.setCod(Integer.parseInt(codigo.getValue()));
 		projeto.setDescricao(descricao.getValue());
-		projeto.setProfessorCpf(professores.get(listbox_professor.getSelectedItem().getValue()));
-		projeto.setTurmaValues(
-				turmas.get(
-						listbox_turma.getSelectedItem().getValue().toString().split("-")[1].trim()
-						)
-					);
+		projeto.setProfessorCpf(cbx_professor.getSelectedItem().getLabel().split("-")[1].trim());
+		
+		String turma[] = cbx_turma.getSelectedItem().getLabel().split("-");
+		projeto.setTurmaDisciplinaCod(turma[0].trim());
+		projeto.setTurmaSemestre(turma[1].trim());
+		projeto.setTurmaNumero(turma[2].trim());
+		
+		projeto.setAtividades_gerais(atividades_gerais.getValue());
 
 		if (projetoDAO.insert(projeto) > 0) {
 
