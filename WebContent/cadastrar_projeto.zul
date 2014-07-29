@@ -29,13 +29,13 @@
                </cell>
             </row>
 				<row>
-					<cell sclass="row-title">Professor:</cell>
+					<cell sclass="row-title">Nome Professor:</cell>
 					<cell>
 						<combobox constraint="no empty" id="cbx_professor" autodrop="true" width="430px"/>
 					</cell>
 				</row>
 				<row>
-					<cell sclass="row-title">Turma:</cell>
+					<cell sclass="row-title">Codigo da Disciplina para Turma:</cell>
 					<cell>
                   <combobox constraint="no empty" id="cbx_turma" autodrop="true" width="430px"/>
 

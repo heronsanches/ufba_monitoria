@@ -46,7 +46,7 @@
 				</columns>
 				<rows>
 					<row>
-						<cell sclass="row-title">Disciplina:</cell>
+						<cell sclass="row-title">Nome Disciplina:</cell>
 						<cell>
 							<combobox constraint="no empty" id="cbx_disciplina"
 								autodrop="true" width="430px" />
