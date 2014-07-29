@@ -24,7 +24,6 @@ public abstract class Mensagem {
 	private static final String INSCRICAO_SUCESSO = "Inscricao efetuada com sucesso.";
 	private static final String INSCRICAO_EDITAL_INSUCESSO = "Não foi possível efetuar inscrição de aluno.\nVerifique se o mesmo possui cadastro no sistema";
 	private static final String ALUNO_INSCRITO_EDITAL = "Não foi possível efetuar inscrição de aluno, pis ele já está inscrito nesse edital";
-
 	
 	public static void inscricaoEncerrada() {
 
@@ -123,7 +122,14 @@ public abstract class Mensagem {
 				Messagebox.EXCLAMATION);
 	}
 	
-public static void alunoInscritoEdital() {
+	public static void alunoInscritoEdital() {
+		
+		Messagebox msg = new Messagebox();
+		msg.show(Mensagem.ALUNO_INSCRITO_EDITAL, "", Messagebox.OK,
+				Messagebox.EXCLAMATION);
+	}
+	
+	public static void insucessoCadastroEdital() {
 		
 		Messagebox msg = new Messagebox();
 		msg.show(Mensagem.ALUNO_INSCRITO_EDITAL, "", Messagebox.OK,
