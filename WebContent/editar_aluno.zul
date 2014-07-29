@@ -45,19 +45,19 @@
 					<row>
 						<cell sclass="row-title">CPF:</cell>
 						<cell>
-							<textbox id="cpf" width="200px" />
+							<textbox constraint="no empty" id="cpf" width="200px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Matricula:</cell>
 						<cell>
-							<textbox id="matricula" width="200px" />
+							<textbox constraint="no empty" id="matricula" width="200px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Nome:</cell>
 						<cell>
-							<textbox id="nome" width="200px" />
+							<textbox constraint="no empty" id="nome" width="200px" />
 						</cell>
 					</row>
 				</rows>

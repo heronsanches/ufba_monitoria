@@ -45,13 +45,13 @@
 					<row>
 						<cell sclass="row-title">Novo nome:</cell>
 						<cell>
-							<textbox id="novoNome" width="430px" />
+							<textbox constraint="no empty" id="novoNome" width="430px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Novo Código:</cell>
 						<cell>
-							<textbox id="codigo_disciplina"
+							<textbox constraint="no empty" id="codigo_disciplina"
 								width="430px" maxlength="10" />
 						</cell>
 					</row>
@@ -60,7 +60,7 @@
 							Novo departamento:
 						</cell>
 						<cell>
-							<combobox autodrop="true"
+							<combobox constraint="no empty" autodrop="true"
 								buttonVisible="false" width="430px" id="cbx_departamento">
 							</combobox>
 						</cell>

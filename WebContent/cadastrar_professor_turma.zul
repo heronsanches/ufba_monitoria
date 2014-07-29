@@ -17,7 +17,7 @@
 							Informe o nome do professor:
 						</cell>
 						<cell>
-							<combobox autodrop="true"
+							<combobox constraint="no empty"  autodrop="true"
 								buttonVisible="false" width="430px" id="cbx_professor">
 							</combobox>
 						</cell>
@@ -39,7 +39,7 @@
 					<row>
 						<cell sclass="row-title">Ano:</cell>
 						<cell>
-							<intbox id="ano" maxlength="4" />
+							<intbox constraint="no negative,no zero" id="ano" maxlength="4" />
 						</cell>
 						<cell sclass="row-title">Semestre:</cell>
 						<radio label="1" radiogroup="rd_group_semestre"/>
@@ -59,7 +59,7 @@
 							Informe nome da disciplina:
 						</cell>
 						<cell>
-							<combobox autodrop="true"
+							<combobox constraint="no empty" autodrop="true"
 								buttonVisible="false" width="430px" id="cbx_disciplina">
 							</combobox>
 						</cell>

@@ -69,23 +69,23 @@
 				<rows>
 				  <row>
 				     <cell sclass="row-title">Novo número:</cell>
-				     <cell> <intbox id="numeroNovo" width="430px" maxlength="6"/> </cell>
+				     <cell> <intbox constraint="no negative,no zero" id="numeroNovo" width="430px" maxlength="6"/> </cell>
 				  </row>
 				  <row>
                  <cell sclass="row-title">Nova hora inicio:</cell>
-                 <cell> <timebox id="horaInicioNova" width="430px"/> </cell>
+                 <cell> <timebox constraint="no empty" id="horaInicioNova" width="430px"/> </cell>
               </row>
               <row>
                  <cell sclass="row-title">Nova hora final:</cell>
-                 <cell> <timebox id="horaFimNova" width="430px"/> </cell>
+                 <cell> <timebox constraint="no empty" id="horaFimNova" width="430px"/> </cell>
               </row>
               <row>
                  <cell sclass="row-title">Nova data inicio:</cell>
-                 <cell> <datebox id="dataNova" width="430px"/> </cell>
+                 <cell> <datebox constraint="no empty" id="dataNova" width="430px"/> </cell>
               </row>
                <row>
                  <cell sclass="row-title">Nova disciplina:</cell>
-                 <cell> <combobox id="disciplinaNova" width="430px"/> </cell>
+                 <cell> <combobox constraint="no empty" id="disciplinaNova" width="430px"/> </cell>
               </row>
 				</rows>
 			</grid>
@@ -101,9 +101,9 @@
             <rows>
                <row>
                  <cell sclass="row-title">Novo ano:</cell>
-                 <cell> <intbox id="anoNovo" maxlength="4" width="200px"/> </cell>
+                 <cell> <intbox constraint="no negative,no zero" id="anoNovo" maxlength="4" width="200px"/> </cell>
                  <cell sclass="row-title">Novo semestre:</cell>
-                 <cell> <intbox id="semestreNovo" maxlength="1" width="200px"/> </cell>
+                 <cell> <intbox constraint="no negative,no zero" id="semestreNovo" maxlength="1" width="200px"/> </cell>
                </row>
             </rows>
          </grid>

@@ -45,21 +45,20 @@
 					<row>
 						<cell sclass="row-title">Novo Nome:</cell>
 						<cell>
-							<textbox id="novoNome" width="200px"
+							<textbox constraint="no empty" id="novoNome" width="200px"
 								maxlength="45" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Nova Matrícula:</cell>
 						<cell>
-							<textbox id="novaMatricula" width="200px"
-								maxlength="20" />
+							<textbox constraint="no empty" id="novaMatricula" width="200px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">CPF:</cell>
 						<cell>
-							<textbox id="novoCpf" width="200px"
+							<textbox constraint="no empty" id="novoCpf" width="200px"
 								maxlength="11" />
 						</cell>
 					</row>

@@ -12,32 +12,32 @@
 				<row>
 					<cell sclass="row-title">Codigo:</cell>
 					<cell>
-						<textbox id="codigo" width="200px"
+						<textbox constraint="no empty" id="codigo" width="200px"
 							maxlength="45" />
 					</cell>
 				</row>
 				<row>
 					<cell sclass="row-title">Descrição:</cell>
 					<cell>
-						<textbox id="descricao" width="400px" />
+						<textbox constraint="no empty" id="descricao" width="400px" />
 					</cell>
 				</row>
 				<row>
                <cell sclass="row-title">Atividades Gerais:</cell>
                <cell>
-                  <textbox multiline="true" id="atividades_gerais" width="400px" height="120px"/>
+                  <textbox constraint="no empty" multiline="true" id="atividades_gerais" width="400px" height="120px"/>
                </cell>
             </row>
 				<row>
 					<cell sclass="row-title">Professor:</cell>
 					<cell>
-						<combobox id="cbx_professor" autodrop="true" width="430px"/>
+						<combobox constraint="no empty" id="cbx_professor" autodrop="true" width="430px"/>
 					</cell>
 				</row>
 				<row>
 					<cell sclass="row-title">Turma:</cell>
 					<cell>
-                  <combobox id="cbx_turma" autodrop="true" width="430px"/>
+                  <combobox constraint="no empty" id="cbx_turma" autodrop="true" width="430px"/>
 
 					</cell>
 				</row>

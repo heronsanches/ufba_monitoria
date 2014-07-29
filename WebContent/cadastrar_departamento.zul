@@ -15,7 +15,7 @@
 				<row>
 					<cell sclass="row-title">Nome:</cell>
 					<cell>
-						<textbox id="nome" width="200px"/>
+						<textbox constraint="no empty" id="nome" width="200px"/>
 					</cell>
 				</row>
 			</rows>

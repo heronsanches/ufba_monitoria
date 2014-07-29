@@ -21,7 +21,10 @@ public abstract class Mensagem {
 			+ " especificado.\n";
 	private static final String INSCRICAO_ENCERRADA = "Edital fechado.\n"
 			+ "Período de inscrição encerrado.";
-	
+	private static final String INSCRICAO_SUCESSO = "Inscricao efetuada com sucesso.";
+	private static final String INSCRICAO_EDITAL_INSUCESSO = "Não foi possível efetuar inscrição de aluno.\nVerifique se o mesmo possui cadastro no sistema";
+	private static final String ALUNO_INSCRITO_EDITAL = "Não foi possível efetuar inscrição de aluno, pis ele já está inscrito nesse edital";
+
 	
 	public static void inscricaoEncerrada() {
 
@@ -105,5 +108,26 @@ public abstract class Mensagem {
 				Messagebox.EXCLAMATION);
 
 	}
+	
+	public static void sucessoInscricao() {
+		
+		Messagebox msg = new Messagebox();
+		msg.show(Mensagem.INSCRICAO_SUCESSO, "", Messagebox.OK,
+				Messagebox.ON_OK);
+	}
 
+	public static void insucessoInscricaoEdital() {
+		
+		Messagebox msg = new Messagebox();
+		msg.show(Mensagem.INSCRICAO_EDITAL_INSUCESSO, "", Messagebox.OK,
+				Messagebox.EXCLAMATION);
+	}
+	
+public static void alunoInscritoEdital() {
+		
+		Messagebox msg = new Messagebox();
+		msg.show(Mensagem.ALUNO_INSCRITO_EDITAL, "", Messagebox.OK,
+				Messagebox.EXCLAMATION);
+	}
+	
 }

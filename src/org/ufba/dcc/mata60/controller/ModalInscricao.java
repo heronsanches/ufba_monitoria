@@ -1,6 +1,11 @@
 package org.ufba.dcc.mata60.controller;
 
+import org.ufba.dcc.mata60.model.Aluno;
+import org.ufba.dcc.mata60.model.AlunoDAO;
+import org.ufba.dcc.mata60.model.AlunoInscricao;
+import org.ufba.dcc.mata60.model.AlunoInscricaoDAO;
 import org.ufba.dcc.mata60.model.Edital;
+import org.ufba.dcc.mata60.model.EditalDAO;
 import org.ufba.dcc.mata60.model.Professor;
 import org.ufba.dcc.mata60.model.ProfessorDAO;
 import org.ufba.dcc.mata60.model.Projeto;
@@ -53,6 +58,9 @@ public class ModalInscricao extends SelectorComposer<Component>{
 	private Textbox atividades_gerais_projeto;
 	
 	@Wire
+	private Textbox cpf_aluno;
+	
+	@Wire
 	private Window modalInscricao;
 
 	
@@ -95,8 +103,26 @@ public class ModalInscricao extends SelectorComposer<Component>{
 	//TODO
 	@Listen("onClick = #btn_inscricao")
 	public void realizarInscricao(){
+		String cpf = cpf_aluno.getText();
+		AlunoDAO alunoDAO = new AlunoDAO();
+		Aluno aluno = alunoDAO.getOneByCPF(cpf);
 		
-		
+		if(aluno == null) {
+			Mensagem.insucessoInscricaoEdital();
+		} else {
+			AlunoInscricao inscricao = new AlunoInscricao();
+			inscricao.setAlunoCPF(cpf);
+			inscricao.setEditalCod(Integer.parseInt(cod_edital.getText()));
+			
+			AlunoInscricaoDAO inscricaoDAO= new AlunoInscricaoDAO();
+			
+			if(inscricaoDAO.insert(inscricao) == 1) {
+				Mensagem.sucessoInscricao();
+				modalInscricao.detach();
+			} else {
+				Mensagem.alunoInscritoEdital();
+			}
+		}
 	}
 	
 	@Listen("onClick = #btn_cancelar")

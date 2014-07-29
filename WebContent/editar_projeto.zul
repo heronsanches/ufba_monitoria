@@ -45,14 +45,14 @@
                <row>
                   <cell sclass="row-title">Codigo:</cell>
                   <cell>
-                     <textbox id="codigo" width="450px"
+                     <textbox constraint="no empty" id="codigo" width="450px"
                         maxlength="10" />
                   </cell>
                </row>
                <row>
                   <cell sclass="row-title">Descrição:</cell>
                   <cell>
-                     <textbox id="descricao" width="450px" />
+                     <textbox constraint="no empty" id="descricao" width="450px" />
                   </cell>
                </row>
                <row>
@@ -81,13 +81,13 @@
                <row>
                   <cell sclass="row-title">Data Inicio:</cell>
                   <cell>
-                     <datebox id="data_aprovacao" width="450px" />
+                     <datebox constraint="no empty" id="data_aprovacao" width="450px" />
                   </cell>
                </row>
                <row>
                   <cell sclass="row-title">Atividades Gerais:</cell>
                   <cell>
-                     <textbox id="atividades_gerais" width="450px" height="120px"/>
+                     <textbox constraint="no empty" id="atividades_gerais" width="450px" height="120px"/>
                   </cell>
                </row>
                <row>

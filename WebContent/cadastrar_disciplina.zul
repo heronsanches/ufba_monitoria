@@ -12,19 +12,19 @@
                <row>
                   <cell sclass="row-title">Nome:</cell>
                   <cell>
-                     <textbox id="nome" width="200px" />
+                     <textbox constraint="no empty" id="nome" width="200px" />
                   </cell>
                  </row>
                    <row>
                   <cell sclass="row-title">Código:</cell>
                   <cell>
-                     <textbox id="codigo_disciplina" width="200px" maxlength="10"/>
+                     <textbox constraint="no empty" id="codigo_disciplina" width="200px" maxlength="10"/>
                   </cell>
                </row>
                <row>
                   <cell sclass="row-title">Departamento:</cell>
                   <cell>
-                  <combobox id="cbx_departamento" autodrop="true"/>
+                  <combobox constraint="no empty" id="cbx_departamento" autodrop="true"/>
                   </cell>
                </row>
                </rows>

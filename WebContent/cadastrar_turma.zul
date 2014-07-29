@@ -14,26 +14,26 @@
 					<row>
 						<cell sclass="row-title">Número:</cell>
 						<cell>
-							<intbox id="numero" maxlength="6"
+							<intbox constraint="no negative,no zero" id="numero" maxlength="6"
 								width="430px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Hora Inicio:</cell>
 						<cell>
-							<timebox id="hora_inicio" width="430px" />
+							<timebox constraint="no empty" id="hora_inicio" width="430px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Hora Fim:</cell>
 						<cell>
-							<timebox id="hora_fim" width="430px" />
+							<timebox constraint="no empty" id="hora_fim" width="430px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Data Inicio:</cell>
 						<cell>
-							<datebox id="data_inicio" width="430px" />
+							<datebox constraint="no empty" id="data_inicio" width="430px" />
 						</cell>
 					</row>
 				</rows>
@@ -48,7 +48,7 @@
 					<row>
 						<cell sclass="row-title">Disciplina:</cell>
 						<cell>
-							<combobox id="cbx_disciplina"
+							<combobox constraint="no empty" id="cbx_disciplina"
 								autodrop="true" width="430px" />
 						</cell>
 					</row>
@@ -66,11 +66,11 @@
 					<row>
 						<cell sclass="row-title">Ano:</cell>
 						<cell>
-							<intbox id="ano" maxlength="4" />
+							<intbox constraint="no negative,no zero" id="ano" maxlength="4" />
 						</cell>
 						<cell sclass="row-title">Semestre:</cell>
 						<cell>
-							<intbox id="semestre" maxlength="1" />
+							<intbox constraint="no negative,no zero" id="semestre" maxlength="1" />
 						</cell>
 					</row>
 				</rows>

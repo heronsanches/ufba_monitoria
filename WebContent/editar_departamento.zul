@@ -27,7 +27,7 @@
                      Novo nome:
                   </cell>
                   <cell>
-                     <textbox id="novoNome" width="430px" />
+                     <textbox constraint="no empty" id="novoNome" width="430px" />
 
                   </cell>
                </row>

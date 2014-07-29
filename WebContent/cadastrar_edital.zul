@@ -14,19 +14,19 @@
 					<row>
 						<cell sclass="row-title">Data Inicio:</cell>
 						<cell>
-							<datebox id="data_inicio" width="430px" />
+							<datebox constraint="no empty"  id="data_inicio" width="430px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Data Fim:</cell>
 						<cell>
-							<datebox id="data_fim" width="430px" />
+							<datebox constraint="no empty"  id="data_fim" width="430px" />
 						</cell>
 					</row>
 					<row>
 						<cell sclass="row-title">Número de Vagas:</cell>
 						<cell>
-							<intbox id="n_vagas" maxlength="2"
+							<intbox constraint="no negative,no zero"  id="n_vagas" maxlength="2"
 								width="430px" />
 						</cell>
 					</row>
@@ -35,7 +35,7 @@
 							Documentos Necessários:
 						</cell>
 						<cell>
-							<textbox id="documentos_necessarios"
+							<textbox constraint="no empty"  id="documentos_necessarios"
 								multiline="true" maxlength="80" width="430px" height="120px" />
 						</cell>
 					</row>
@@ -60,7 +60,7 @@
 					<row>
 						<cell sclass="row-title">Informe código do projeto:</cell>
 						<cell>
-							<combobox id="cbx_projeto"
+							<combobox constraint="no empty" id="cbx_projeto"
 								autodrop="true" width="430px" />
 						</cell>
 					</row>
