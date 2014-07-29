@@ -1,13 +1,11 @@
 package org.ufba.dcc.mata60.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 
 import org.ufba.dcc.mata60.model.Departamento;
 import org.ufba.dcc.mata60.model.DepartamentoDAO;
-import org.ufba.dcc.mata60.model.Disciplina;
-import org.ufba.dcc.mata60.model.DisciplinaDAO;
+
 import org.ufba.dcc.mata60.model.Professor;
 import org.ufba.dcc.mata60.model.ProfessorDAO;
 import org.zkoss.zk.ui.Component;
@@ -163,15 +161,14 @@ public class EditarProfessor extends SelectorComposer<Component> {
 
 		Professor professor = new Professor();
 		professor.setNome(novoNome.getValue());
-		professor.setMatricula(cbx_professor.getSelectedItem().getLabel()
-				.split("-")[0].trim());
+		professor.setMatricula(novaMatricula.getValue());
 		professor.setDepartamento_cod(Integer.valueOf(listbox_departamentoNomes
 				.getSelectedItem().getLabel().split("-")[1].trim()));
 		professor.setCpf(novoCpf.getValue());
 		professor
 				.setTipo(rd_group_tipoProfessores.getSelectedItem().getLabel());
 
-		if (professorDAO.updateOne(professor) > 0) {
+		if (professorDAO.updateOne(professor, cbx_professor.getSelectedItem().getLabel().split("-")[0].trim()) > 0) {
 			Mensagem.sucessoUpdate();
 			atualizar();
 

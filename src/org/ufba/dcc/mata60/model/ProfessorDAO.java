@@ -176,7 +176,7 @@ public class ProfessorDAO {
 
 	}
 
-	public int updateOne(Professor professor) {
+	public int updateOne(Professor professor, String matricula) {
 
 		int count = 0;
 
@@ -196,7 +196,7 @@ public class ProfessorDAO {
 			preparedStatement.setInt(3, professor.getDepartamento_cod());
 			preparedStatement.setString(4, professor.getCpf());
 			preparedStatement.setString(5, professor.getTipo());
-			preparedStatement.setString(6, professor.getMatricula());
+			preparedStatement.setString(6, matricula);
 
 			count = preparedStatement.executeUpdate();
 

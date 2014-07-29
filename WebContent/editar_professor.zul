@@ -52,7 +52,7 @@
 					<row>
 						<cell sclass="row-title">Nova Matrícula:</cell>
 						<cell>
-							<textbox constraint="no empty" id="novaMatricula" width="200px" />
+							<textbox constraint="no empty" id="novaMatricula" width="200px" maxlength="20"/>
 						</cell>
 					</row>
 					<row>
