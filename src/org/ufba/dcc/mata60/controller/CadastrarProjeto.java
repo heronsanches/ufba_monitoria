@@ -17,7 +17,6 @@ import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Include;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.ListModels;
-import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
 
 public class CadastrarProjeto extends SelectorComposer<Component> {
